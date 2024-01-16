@@ -1,0 +1,44 @@
+.section {
+    display: inline-flex;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+
+#logo_section {
+    width: 25%;
+}
+
+#logo_section img {
+    height: 100px;
+    width: 100px;
+}
+
+#quick_login {
+    width: 25%;
+}
+
+#service_section {
+    width: 25%;
+}
+
+a {
+    text-decoration: none;
+    font-size: larger;
+    margin: 10px;
+    padding: 10px;
+    display: block;
+}
+a:hover{
+    background-color: rgb(58, 50, 50);
+    color: white;
+}
+
+#GIT {
+    width: 25%;
+}
+
+footer {
+    margin-top: 15px;
+    text-align: center;
+}
