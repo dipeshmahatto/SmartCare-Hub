@@ -1,8 +1,10 @@
-<?php 
+<?php
 
 echo "hello";
 
 
-include("footer.php");
 
+
+
+include("footer.php");
 ?>
