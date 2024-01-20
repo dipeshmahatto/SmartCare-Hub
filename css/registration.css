@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    background: rgb(43, 43, 56,1);
+    padding: 28px;
+    margin: 0 28px;
+    border-radius: 10px;
+    box-shadow: -2px 2px 2px white;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 6px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    border-bottom: solid 1px white;
+}
+
+.register_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* padding: 20px 0; */
+}
+
+.input {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding-bottom: 15px;
+}
+
+.input label {
+    width: 95%;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 5px 0;
+}
+
+.input input {
+    height: 40px;
+    width: 95%;
+    border-radius: 7px;
+    border: 1px solid grey;
+    padding: 0 10px;
+}
+
+.gender {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    border-bottom: 1px solid white;
+}
+
+.genders {
+    margin: 15px 0;
+    color: white;
+}
+
+.genders label {
+    padding: 0 20px 0 5px;
+}
+
+.genders label,
+.genders input,
+.submit input {
+    cursor: pointer;
+}
+
+.submit {
+    margin-top: 40px;
+}
+
+.submit input {
+    display: block;
+    width: 100%;
+    /* margin-top: 10px; */
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+    background: rgb(98, 219, 237);
+}
+
+.submit input:hover {
+    background: rgb(109, 152, 160);
+    color: rgb(255, 255, 255);
+}
+.already{
+    color: white;
+    text-align: center;
+    margin: 15px 0 0 0;
+
+}
+.already label a {
+    text-decoration: none;
+    color: #62ff00;
+}
+.already label a:hover {
+    text-decoration: none;
+    color: #ec1414;
+}

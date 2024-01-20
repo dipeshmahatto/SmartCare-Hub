@@ -2,14 +2,14 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Patient Registration</title>
+  <title>Doctor Registration</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <link rel="stylesheet" href="../../css/registration.css" />
 </head>
 
 <body>
   <div class="container">
-    <h1>Patient</h1>
+    <h1>Doctor</h1>
     <form action="#" method="get">
       <div class="register_box">
         <!-- Full name  -->
@@ -37,9 +37,19 @@
           <label for="birthYear">Birth Year</label>
           <input type="text" id="birthYear" name="birthYear" placeholder="Enter Birth Year Eg:- 1997" required />
         </div>
+        <!-- Address  -->
         <div class="input">
           <label for="address">Address</label>
           <input type="text" id="address" name="address" placeholder="Enter Address" required />
+        </div>
+        <!-- Speciality -->
+        <div class="input">
+          <label for="speciality">Speciality</label>
+          <input type="text" id="speciality" name="speciality" placeholder="Enter Speciality" required />
+        </div>
+        <div class="input">
+          <label for="qualification">Qualification</label>
+          <input type="text" id="qualification" name="qualification" placeholder="Enter Qualification" required />
         </div>
         <!-- Password  -->
         <div class="input">
