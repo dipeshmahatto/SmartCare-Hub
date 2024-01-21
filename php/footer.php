@@ -18,9 +18,9 @@
         </div>
         <div id="quick_login">
             <h3>Quick Login</h3>
-            <a href="#">Admin</a><br>
-            <a href="#">Doctor</a><br>
-            <a href="#">Patient</a>
+            <a href="admin/admin_login.php">Admin</a><br>
+            <a href="doctor/doctor_login.php">Doctor</a><br>
+            <a href="patient/patient_login.php">Patient</a>
         </div>
         <div id="service_section">
             <h3>Services</h3>

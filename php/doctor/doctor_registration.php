@@ -77,7 +77,7 @@
       </div>
     </form>
     <div class="already">
-        <label for="login">Already have an account: <a href="#">Login</a></label>
+        <label for="login">Already have an account: <a href="doctor_login.php">Login</a></label>
       </div>
   </div>
 </body>
