@@ -13,10 +13,55 @@ body {
     display: flex;
 }
 .nav {
-    width: 30%;
+    width: 20%;
     height: 100vh;
 }
 .content{
-    width: 70%;
+    width: 80%;
     height: 100vh;
+}
+.profile{
+    display: block;
+    height: 30%;
+    width: 100%;
+    background-color: aqua;
+    text-align: center;
+    padding-top: 5px;
+}
+.profile img{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+.profile input{
+    margin-top: 10px;
+}
+.operation{
+    display: block;
+    height: 70%;
+    width: 100%;
+    text-align: center;
+    background-color: brown;
+}
+.operation a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    width: 100%;
+    padding-top: 35px;
+}
+.operation a i {
+    margin-right: 10px;
+}
+.top{
+    height: 15%;
+    background-color: bisque;
+}
+.middle{
+    height: 30%;
+    background-color: blueviolet;
+}
+.table{
+    height: 55%;
+    background-color: yellow;
 }
