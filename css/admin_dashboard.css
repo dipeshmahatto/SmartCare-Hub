@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+body {
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+}
+.nav {
+    width: 30%;
+    height: 100vh;
+}
+.content{
+    width: 70%;
+    height: 100vh;
+}
