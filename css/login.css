@@ -59,14 +59,17 @@ h1 {
     padding: 0 10px;
     margin-top: 5px;
 }
-.container .forgot{
+
+.container .forgot {
     margin-top: 10px;
 }
-.container .forgot a{
-    text-decoration: none;  
+
+.container .forgot a {
+    text-decoration: none;
     color: rgb(239 136 136);
 }
-.container .forgot a:hover{ 
+
+.container .forgot a:hover {
     color: rgb(239 136 136);
 }
 

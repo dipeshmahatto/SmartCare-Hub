@@ -37,9 +37,10 @@ body {
     width: 150px;
     border-radius: 50%;
 }
+
 .operation {
     display: block;
-    height: 70%;
+    /* height: 100vh; */
     width: 100%;
     text-align: center;
     /* background-color: brown; */
@@ -58,7 +59,7 @@ body {
     margin-right: 10px;
 }
 
-.operation .dashboard {
+.operation .patient {
     background-color: #46f646;
     color: black;
     border-radius: 15px;
@@ -77,33 +78,9 @@ body {
     margin-right: 30px;
 }
 
-.middle {
-    height: 30%;
-    /* background-color: blueviolet; */
-    display: flex;
-}
-
-.middle .list {
-    margin: 20px;
-    width: 30%;
-    display: flex;
-    justify-content: right;
-    padding-right: 30px;
-    align-items: center;
-    font-size: 70px;
-    background-color: rgb(133, 127, 127);
-}
-
-.middle .list .fa-solid,
-.fas {
-    font-size: 100px;
-}
-
-.middle .list h3 {
-    margin-right: 90px;
-}
-
 .table {
+    /* height: 100%; */
+    /* background-color: yellow; */
     display: block;
     padding-top: 30px;
 }
@@ -113,6 +90,7 @@ th,
 td {
     border: 1px solid black;
     border-collapse: collapse;
+    
     margin-left: auto;
     margin-right: auto;
 }
