@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -15,15 +14,15 @@
       <div class="login_box">
         <div class="input">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" placeholder="Enter Username"  />
+          <input type="text" id="username" name="username" placeholder="Enter Username" />
         </div>
         <div class="input">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter Password"  />
+          <input type="password" id="password" name="password" placeholder="Enter Password" />
         </div>
       </div>
       <div class="submit">
-        <input type="submit"  value="Login">
+        <input type="submit" value="Login">
       </div>
     </form>
   </div>
