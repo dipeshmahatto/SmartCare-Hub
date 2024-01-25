@@ -37,6 +37,7 @@ body {
     width: 150px;
     border-radius: 50%;
 }
+
 .operation {
     display: block;
     height: 70%;
@@ -64,6 +65,12 @@ body {
     border-radius: 15px;
 }
 
+.operation .history {
+    background-color: #46f646;
+    color: black;
+    border-radius: 15px;
+}
+
 .top {
     height: 10%;
     background-color: bisque;
@@ -76,6 +83,7 @@ body {
 .top a {
     margin-right: 30px;
 }
+
 .table {
     display: block;
     padding-top: 50px;

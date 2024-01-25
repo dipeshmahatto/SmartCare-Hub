@@ -9,7 +9,7 @@ $result = mysqli_query($conn, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/doctor_list.css">
+    <link rel="stylesheet" href="../../css//admin_dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Admin Dashboard</title>
 </head>
@@ -52,6 +52,24 @@ $result = mysqli_query($conn, $sql);
                             </td>
                             <td>
                                 <?= $row["fullName"] ?>
+                            </td>
+                            <td>
+                                <?= $row["address"] ?>
+                            </td>
+                            <td>
+                                <?= $row["age"] ?>
+                            </td>
+                            <td>
+                                <?= $row["gender"] ?>
+                            </td>
+                            <td>
+                                <?= $row["phoneNumber"] ?>
+                            </td>
+                            <td>
+                                <?= $row["qualification"] ?>
+                            </td>
+                            <td>
+                                <?= $row["speciality"] ?>
                             </td>
                         </tr>
                     <?php endwhile; ?>

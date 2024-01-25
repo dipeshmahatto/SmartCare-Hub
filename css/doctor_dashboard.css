@@ -63,6 +63,11 @@ body {
     color: black;
     border-radius: 15px;
 }
+.operation .history {
+    background-color: #46f646;
+    color: black;
+    border-radius: 15px;
+}
 
 .top {
     height: 10%;

@@ -28,6 +28,9 @@
       <div class="submit">
         <input type="submit" value="Login">
       </div>
+      <div class="home">
+        <a href="../index.php">Home</a>
+      </div>
     </form>
     <div class="register">
       <label for="login">Don`t have an account: </label><a href="patient_registration.php">Register</a>

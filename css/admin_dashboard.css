@@ -37,6 +37,7 @@ body {
     width: 150px;
     border-radius: 50%;
 }
+
 .operation {
     display: block;
     height: 70%;
@@ -59,6 +60,24 @@ body {
 }
 
 .operation .dashboard {
+    background-color: #46f646;
+    color: black;
+    border-radius: 15px;
+}
+
+.operation .approval {
+    background-color: #46f646;
+    color: black;
+    border-radius: 15px;
+}
+
+.operation .patient {
+    background-color: #46f646;
+    color: black;
+    border-radius: 15px;
+}
+
+.operation .doctor {
     background-color: #46f646;
     color: black;
     border-radius: 15px;

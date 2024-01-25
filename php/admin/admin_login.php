@@ -24,6 +24,9 @@
       <div class="submit">
         <input type="submit" value="Login">
       </div>
+      <div class="home">
+        <a href="../index.php">Home</a>
+      </div>
     </form>
   </div>
 </body>
