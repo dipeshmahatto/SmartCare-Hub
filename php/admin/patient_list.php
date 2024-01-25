@@ -1,3 +1,10 @@
+<?php
+include "../database.php";
+$sql = "SELECT * FROM patient";
+$result = mysqli_query($conn, $sql);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,6 +44,31 @@
                         <th>Gender</th>
                         <th>phone number</th>
                     </tr>
+
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td>
+                                <?= $row["id"] ?>
+                            </td>
+                            <td>
+                                <?= $row["fullName"] ?>
+                            </td>
+                            <td>
+                                <?= $row["address"] ?>
+                            </td>
+                            <td>
+                                <?= $row["age"] ?>
+                            </td>
+                            <td>
+                                <?= $row["gender"] ?>
+                            </td>
+                            <td>
+                                <?= $row["phoneNumber"] ?>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+
+
                 </table>
             </div>
         </div>

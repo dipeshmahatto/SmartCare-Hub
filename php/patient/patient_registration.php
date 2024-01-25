@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <h1>Patient</h1>
-    <form action="#" method="get">
+    <form action="#" method="post">
       <div class="register_box">
         <!-- Full name  -->
         <div class="input">
@@ -29,7 +29,7 @@
         </div>
         <!-- Age  -->
         <div class="input">
-          <label for="phoneNumber">Age</label>
+          <label for="age">Age</label>
           <input type="text" id="age" name="age" placeholder="Enter Age" required />
         </div>
         <!-- Birth Year  -->

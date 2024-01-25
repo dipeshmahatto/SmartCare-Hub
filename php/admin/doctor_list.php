@@ -1,3 +1,8 @@
+<?php
+include "../database.php";
+$sql = "SELECT * FROM doctor";
+$result = mysqli_query($conn, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,6 +44,18 @@
                         <th>Qualification</th>
                         <th>Speciality</th>
                     </tr>
+
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td>
+                                <?= $row["id"] ?>
+                            </td>
+                            <td>
+                                <?= $row["fullName"] ?>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+
                 </table>
             </div>
         </div>

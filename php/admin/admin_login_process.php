@@ -5,13 +5,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 }
-if (empty($username)) {
-    header("Location: admin_login.php?error=UserName is Required");
-    exit();
-} else if (empty($password)) {
-    header("Location: admin_login.php?error=Password is Required");
-    exit();
-}
 $sql = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
 $result = mysqli_query($conn, $sql);
 

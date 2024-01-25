@@ -29,7 +29,7 @@
         </div>
         <!-- Age  -->
         <div class="input">
-          <label for="phoneNumber">Age</label>
+          <label for="age">Age</label>
           <input type="text" id="age" name="age" placeholder="Enter Age" required />
         </div>
         <!-- Birth Year  -->
