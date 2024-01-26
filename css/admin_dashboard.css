@@ -125,6 +125,7 @@ body {
 .table {
     display: block;
     padding-top: 30px;
+    font-size: larger;
 }
 
 .table table,
@@ -134,9 +135,28 @@ td {
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 table th,
 td {
     padding: 10px;
+}
+table button{
+    padding: 5px;
+    margin: 5px;
+    color: rgb(255, 254, 254);
+    font-size: larger;
+}
+.reject{
+    background-color: rgb(244, 10, 10);
+}
+.reject:hover{
+    background-color: rgb(144, 22, 22);
+}
+.approve{
+    background-color: rgba(28, 183, 31, 0.758);
+}
+.approve:hover{
+    background-color: rgb(13, 96, 13);
 }

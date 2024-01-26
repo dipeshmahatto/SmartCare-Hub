@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2024 at 03:47 AM
+-- Generation Time: Jan 26, 2024 at 09:24 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -66,7 +66,27 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`id`, `fullName`, `email`, `phoneNumber`, `age`, `birthYear`, `address`, `speciality`, `qualification`, `password`, `gender`) VALUES
-(1, 'Dipesh Mahato', 'dipesh@gmail.com', '9803643491', 21, 2003, 'gaushala', 'doctor', 'mbbs', 'doctor', 'm');
+(5, 'Dr.Dipesh', 'dipeshmahatto@gmail.com', '9745837908', 31, 2003, 'kalimati', 'leg', 'mbbs', '12345678', 'm');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor_approval`
+--
+
+CREATE TABLE `doctor_approval` (
+  `id` int(11) NOT NULL,
+  `fullName` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phoneNumber` varchar(11) NOT NULL,
+  `age` int(2) NOT NULL,
+  `birthYear` int(4) NOT NULL,
+  `address` varchar(105) NOT NULL,
+  `speciality` varchar(55) NOT NULL,
+  `qualification` varchar(55) NOT NULL,
+  `password` varchar(55) NOT NULL,
+  `gender` varchar(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -112,6 +132,12 @@ ALTER TABLE `doctor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `doctor_approval`
+--
+ALTER TABLE `doctor_approval`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `patient`
 --
 ALTER TABLE `patient`
@@ -128,10 +154,10 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `doctor`
+-- AUTO_INCREMENT for table `doctor_approval`
 --
-ALTER TABLE `doctor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `doctor_approval`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `patient`

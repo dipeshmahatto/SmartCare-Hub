@@ -1,16 +1,17 @@
-<html>
 
+<html>
 <head>
   <meta charset="utf-8" />
   <title>Doctor Registration</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <link rel="stylesheet" href="../../css/registration.css" />
+  <script src="../../js/wating.js"></script>
 </head>
 
 <body>
   <div class="container">
     <h1>Doctor</h1>
-    <form action="#" method="get">
+    <form onsubmit="wating()" action="doctor_registration_process.php"  method="post">
       <div class="register_box">
         <!-- Full name  -->
         <div class="input">
@@ -64,11 +65,11 @@
       <!-- Gender  -->
       <span class="gender">Gender</span>
       <div class="genders">
-        <input type="radio" name="gender" id="male" required>
+        <input type="radio" name="gender" id="male" value="m" required>
         <label for="male">Male</label>
-        <input type="radio" name="gender" id="female">
+        <input type="radio" name="gender" id="female" value="f">
         <label for="female">Female</label>
-        <input type="radio" name="gender" id="other">
+        <input type="radio" name="gender" id="other" value="o"> 
         <label for="other">Other</label>
       </div>
 

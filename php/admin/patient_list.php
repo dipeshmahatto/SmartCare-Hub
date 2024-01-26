@@ -48,7 +48,7 @@ $result = mysqli_query($conn, $sql);
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <tr>
                             <td>
-                                <?= $row["id"] ?>
+                                <?= $row["id"] ?>.
                             </td>
                             <td>
                                 <?= $row["fullName"] ?>

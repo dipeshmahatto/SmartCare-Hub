@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+include "../database.php";
+$sql = "SELECT * FROM doctor_approval";
+$result = mysqli_query($conn, $sql);
+?>
 <html lang="en">
 
 <head>
@@ -37,8 +41,36 @@
                         <th>Gender</th>
                         <th>phone number</th>
                         <th>operation</th>
-
                     </tr>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td>
+                                <?= $row["id"] ?>.
+                            </td>
+                            <td>
+                                <?= $row["fullName"] ?>
+                            </td>
+                            <td>
+                                <?= $row["address"] ?>
+                            </td>
+                            <td>
+                                <?= $row["age"] ?>
+                            </td>
+                            <td>
+                                <?= $row["gender"] ?>
+                            </td>
+                            <td>
+                                <?= $row["phoneNumber"] ?>
+                            </td>
+                            <td>
+                                <form method="post" action="approve.php">
+                                    <input type="hidden" name="id" value="<?= $row["id"] ?>">
+                                    <button type="submit" name="approve" class="approve">Approve</button>
+                                    <button type="submit" name="reject" class="reject">Reject</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
                 </table>
             </div>
         </div>
