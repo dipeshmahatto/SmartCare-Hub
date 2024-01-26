@@ -3,7 +3,7 @@ function validateForm() {
     var password = document.getElementById("password").value;
 
     if (username === "" || password === "") {
-        alert("Please fill in both username and password.");
+        alert("Please fill the both username and password.");
         return false; // Prevent the form from being submitted
     }
 

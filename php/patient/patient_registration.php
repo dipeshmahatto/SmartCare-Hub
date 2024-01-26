@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <h1>Patient</h1>
-    <form action="#" method="post">
+    <form action="patient_registration_process.php" method="post">
       <div class="register_box">
         <!-- Full name  -->
         <div class="input">
@@ -25,17 +25,17 @@
         <!-- Phone number  -->
         <div class="input">
           <label for="phoneNumber">Phone Number</label>
-          <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" required />
+          <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" required />
         </div>
         <!-- Age  -->
         <div class="input">
           <label for="age">Age</label>
-          <input type="text" id="age" name="age" placeholder="Enter Age" required />
+          <input type="number" id="age" name="age" placeholder="Enter Age" required />
         </div>
         <!-- Birth Year  -->
         <div class="input">
           <label for="birthYear">Birth Year</label>
-          <input type="text" id="birthYear" name="birthYear" placeholder="Enter Birth Year Eg:- 1997" required />
+          <input type="number" id="birthYear" name="birthYear" placeholder="Enter Birth Year Eg:- 1997" required />
         </div>
         <div class="input">
           <label for="address">Address</label>
@@ -54,11 +54,11 @@
       <!-- Gender  -->
       <span class="gender">Gender</span>
       <div class="genders">
-        <input type="radio" name="gender" id="male" required>
+        <input type="radio" name="gender" id="male" value="m" required>
         <label for="male">Male</label>
-        <input type="radio" name="gender" id="female">
+        <input type="radio" name="gender" id="female" value="f">
         <label for="female">Female</label>
-        <input type="radio" name="gender" id="other">
+        <input type="radio" name="gender" id="other" value="o">
         <label for="other">Other</label>
       </div>
 

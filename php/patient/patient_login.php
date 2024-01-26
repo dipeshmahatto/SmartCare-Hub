@@ -15,11 +15,11 @@
       <div class="login_box">
         <div class="input">
           <label for="phoneNumber">Phone Number</label>
-          <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number"  />
+          <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" />
         </div>
         <div class="input">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter Password"  />
+          <input type="password" id="password" name="password" placeholder="Enter Password" />
         </div>
       </div>
       <div class="forgot">
@@ -28,12 +28,12 @@
       <div class="submit">
         <input type="submit" value="Login">
       </div>
-      <div class="home">
-        <a href="../index.php">Home</a>
-      </div>
     </form>
     <div class="register">
       <label for="login">Don`t have an account: </label><a href="patient_registration.php">Register</a>
+    </div>
+    <div class="home">
+      <a href="../index.php">Home</a>
     </div>
   </div>
 </body>
