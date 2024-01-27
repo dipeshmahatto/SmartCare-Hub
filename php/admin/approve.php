@@ -25,6 +25,7 @@ if (isset($_POST["approve"])) {
 } elseif (isset($_POST["reject"])) {
     // Perform actions for rejecting the user with the given ID
     $sql = "DELETE FROM doctor_approval WHERE id = $id";
+    header("Location: approval.php");
 }
 
 if ($conn->query($sql) === TRUE&& $conn->query($sqll) === TRUE) {

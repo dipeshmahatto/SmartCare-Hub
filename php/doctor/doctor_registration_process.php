@@ -52,7 +52,7 @@ if (empty($age)) {
 if (empty($birthYear)) {
     header("Location: doctor_registration.php?error=BirthYear is Required");
     exit();
-} elseif ($birthYear < 1925 && $age > 2000) {
+} elseif ($birthYear < 1925 && $birthYear > 2000) {
     header("Location: doctor_registration.php?error=BirthYear is Invalid");
     exit();
 }

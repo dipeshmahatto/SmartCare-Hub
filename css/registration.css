@@ -61,6 +61,15 @@ h1 {
     border: 1px solid grey;
     padding: 0 10px;
 }
+.input select {
+    height: 40px;
+    width: 95%;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 7px;
+    border: 1px solid grey;
+}
+
 
 .gender {
     color: white;

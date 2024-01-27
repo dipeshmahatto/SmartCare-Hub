@@ -36,9 +36,13 @@ $result = mysqli_query($conn, $sql);
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
+                        <th>Email</th>
                         <th>Address</th>
                         <th>Age</th>
+                        <th>Birth Year</th>
                         <th>Gender</th>
+                        <th>Speciality</th>
+                        <th>Qualification</th>
                         <th>phone number</th>
                         <th>operation</th>
                     </tr>
@@ -51,13 +55,25 @@ $result = mysqli_query($conn, $sql);
                                 <?= $row["fullName"] ?>
                             </td>
                             <td>
+                                <?= $row["email"] ?>
+                            </td>
+                            <td>
                                 <?= $row["address"] ?>
                             </td>
                             <td>
                                 <?= $row["age"] ?>
                             </td>
                             <td>
+                                <?= $row["birthYear"] ?>
+                            </td>
+                            <td>
                                 <?= $row["gender"] ?>
+                            </td>
+                            <td>
+                                <?= $row["speciality"] ?>
+                            </td>
+                            <td>
+                                <?= $row["qualification"] ?>
                             </td>
                             <td>
                                 <?= $row["phoneNumber"] ?>

@@ -1,5 +1,5 @@
-
 <html>
+
 <head>
   <meta charset="utf-8" />
   <title>Doctor Registration</title>
@@ -11,7 +11,7 @@
 <body>
   <div class="container">
     <h1>Doctor</h1>
-    <form onsubmit="wating()" action="doctor_registration_process.php"  method="post">
+    <form onsubmit="wating()" action="doctor_registration_process.php" method="post">
       <div class="register_box">
         <!-- Full name  -->
         <div class="input">
@@ -46,11 +46,23 @@
         <!-- Speciality -->
         <div class="input">
           <label for="speciality">Speciality</label>
-          <input type="text" id="speciality" name="speciality" placeholder="Enter Speciality" required />
+          <select id="speciality" name="speciality">
+            <option value=""></option>
+            <option value="Surgery">Surgery</option>
+            <option value="Dental">Dental</option>
+            <option value="Ophthalmology">Ophthalmology</option>
+            <option value="Radiology">Radiology</option>
+          </select>
         </div>
         <div class="input">
           <label for="qualification">Qualification</label>
-          <input type="text" id="qualification" name="qualification" placeholder="Enter Qualification" required />
+          <select id="qualification" name="qualification">
+            <option value=""></option>
+            <option value="MBBS">MBBS</option>
+            <option value="MD">MD</option>
+            <option value="PHD">PHD</option>
+            <option value="BDS">BDS</option>
+          </select>
         </div>
         <!-- Password  -->
         <div class="input">
@@ -69,7 +81,7 @@
         <label for="male">Male</label>
         <input type="radio" name="gender" id="female" value="f">
         <label for="female">Female</label>
-        <input type="radio" name="gender" id="other" value="o"> 
+        <input type="radio" name="gender" id="other" value="o">
         <label for="other">Other</label>
       </div>
 
@@ -78,8 +90,8 @@
       </div>
     </form>
     <div class="already">
-        <label for="login">Already have an account: <a href="doctor_login.php">Login</a></label>
-      </div>
+      <label for="login">Already have an account: <a href="doctor_login.php">Login</a></label>
+    </div>
   </div>
 </body>
 

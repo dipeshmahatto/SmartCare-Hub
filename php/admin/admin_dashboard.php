@@ -5,6 +5,19 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: admin_login.php");
     exit;
 }
+include "../database.php";
+//counting doctors from database
+$sql = "SELECT COUNT(*) AS doctors FROM doctor";
+$count1 = mysqli_query($conn, $sql);
+$doctors = $count1->fetch_assoc()['doctors'];
+// counting patients from database 
+$sql = "SELECT COUNT(*) AS patient FROM patient";
+$count2 = mysqli_query($conn, $sql);
+$patients = $count2->fetch_assoc()['patient'];
+// counting doctors registration to be verifed by admin from database 
+$sql = "SELECT COUNT(*) AS approve FROM doctor_approval";
+$count3 = mysqli_query($conn, $sql);
+$approvals = $count3->fetch_assoc()['approve'];
 ?>
 
 <!DOCTYPE html>
@@ -39,19 +52,19 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <div class="middle">
                 <div class="list">
                     <h3>
-                        <?php echo 5; ?>
+                        <?php echo $doctors; ?>
                     </h3>
                     <i class="fa-solid fa-user-doctor"></i>
                 </div>
                 <div class="list">
                     <h3>
-                        <?php echo 8; ?>
+                        <?php echo $patients; ?>
                     </h3>
                     <i class="fa-solid fa-bed-pulse"></i>
                 </div>
                 <div class="list">
                     <h3>
-                        <?php echo 1; ?>
+                        <?php echo $approvals; ?>
                     </h3>
                     <i class="fa-solid fa-person-circle-check"></i>
                 </div>
