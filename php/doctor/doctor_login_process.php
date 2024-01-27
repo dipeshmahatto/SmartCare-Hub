@@ -12,6 +12,7 @@ if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
     $_SESSION['id'] = $row['id'];
     $_SESSION['phoneNumber'] = $row['phoneNumber'];
+    $_SESSION['loggedin'] = true;
     header('Location:doctor_dashboard.php');
 } else {
     header("Location: doctor_login.php?error=Phone Number and Password Does Not Match");

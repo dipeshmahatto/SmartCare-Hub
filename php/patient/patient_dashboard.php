@@ -1,4 +1,10 @@
 <?php
+session_start();
+// Check if the user is logged in
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: patient_login.php");
+    exit;
+}
 include("session_values.php");
 ?>
 <!DOCTYPE html>
@@ -18,7 +24,9 @@ include("session_values.php");
             <div class="profile">
                 <img src="../../img/admin_profile.jpg" alt="">
                 <br>
-                <h3><?php echo $fullName; ?></h3>
+                <h3>
+                    <?php echo $fullName; ?>
+                </h3>
             </div>
             <hr>
             <div class="operation">

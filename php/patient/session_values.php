@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 // Access session data from patient login process 1
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
