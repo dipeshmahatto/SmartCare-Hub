@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("session_values.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,13 +19,15 @@
             <div class="profile">
                 <img src="../../img/admin_profile.jpg" alt="">
                 <br>
-                <h3>Patient</h3>
+                <h3>
+                    <?php echo $fullName; ?>
+                </h3>
             </div>
             <hr>
             <div class="operation">
                 <a href="patient_dashboard.php"><i class="fa-solid fa-user-doctor"></i>Active Appointment</a>
-                <a href="#"><i class="fa-solid fa-user-doctor"></i>Book Appointment</a>
-                <a href="#" class="history"><i class="fa-solid fa-clock-rotate-left"></i>History Appointment</a>
+                <a href="appointment.php"><i class="fa-solid fa-user-doctor"></i>Book Appointment</a>
+                <a href="#" class="active"><i class="fa-solid fa-clock-rotate-left"></i>History Appointment</a>
             </div>
         </div>
         <div class="content">

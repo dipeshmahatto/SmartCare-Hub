@@ -116,17 +116,20 @@ h1 {
     text-decoration: none;
     color: #ec1414;
 }
-.home{
+
+.home {
     text-align: center;
     margin-top: 25px;
 }
-.home a{
+
+.home a {
     text-decoration: none;
     color: rgb(247, 245, 245);
     border: 2px solid white;
     padding: 5px;
 }
-.home a:hover{
+
+.home a:hover {
     color: rgb(81, 237, 50);
     background-color: rgb(125, 125, 126);
 }

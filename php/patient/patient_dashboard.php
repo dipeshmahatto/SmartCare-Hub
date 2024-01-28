@@ -31,7 +31,7 @@ include("session_values.php");
             <hr>
             <div class="operation">
                 <a href="#" class="active"><i class="fa-solid fa-user-doctor"></i>Active Appointment</a>
-                <a href="#"><i class="fa-solid fa-user-doctor"></i>Book Appointment</a>
+                <a href="appointment.php" c><i class="fa-solid fa-user-doctor"></i>Book Appointment</a>
                 <a href="history.php"><i class="fa-solid fa-clock-rotate-left"></i>History Appointment</a>
             </div>
         </div>
@@ -50,22 +50,22 @@ include("session_values.php");
                     </tr>
                     <tr>
                         <td>
-                            <?php echo $id; ?>
+                            <?php echo "x"; ?>
                         </td>
                         <td>
-                            <?php echo $fullName; ?>
+                            <?php echo "x"; ?>
                         </td>
                         <td>
-                            <?php echo $address; ?>
+                            <?php echo "x"; ?>
                         </td>
                         <td>
-                            <?php echo $age; ?>
+                            <?php echo "x"; ?>
                         </td>
                         <td>
-                            <?php echo $gender; ?>
+                            <?php echo "x"; ?>
                         </td>
                         <td>
-                            <?php echo $phoneNumber; ?>
+                            <?php echo "x"; ?>
                         </td>
                     </tr>
                 </table>
