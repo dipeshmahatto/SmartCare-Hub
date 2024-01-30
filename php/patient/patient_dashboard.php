@@ -6,6 +6,12 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit;
 }
 include("session_values.php");
+include("../database.php");
+
+
+// active appointments
+$app = "SELECT * FROM appointment WHERE pid='$id' AND status=0";
+$result = mysqli_query($conn, $app);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,32 +48,36 @@ include("session_values.php");
                 <table>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>phone number</th>
+                        <th>Category</th>
+                        <th>Doctor Name</th>
+                        <th>Appointment time</th>
+                        <th>Day</th>
+                        <th>Status</th>
                     </tr>
+                    <?php
+                    while ($row = $result->fetch_assoc()):
+                    ?>
                     <tr>
                         <td>
-                            <?php echo "x"; ?>
+                            <?php echo $row["aid"]; ?>
                         </td>
                         <td>
-                            <?php echo "x"; ?>
+                            <?php echo $row["category"]; ?>
                         </td>
                         <td>
-                            <?php echo "x"; ?>
+                            <?php echo $row["doctor"]; ?>
                         </td>
                         <td>
-                            <?php echo "x"; ?>
+                            <?php echo $row["app_time"] ?>
                         </td>
                         <td>
-                            <?php echo "x"; ?>
+                            <?php echo $row["day"]; ?>
                         </td>
                         <td>
                             <?php echo "x"; ?>
                         </td>
                     </tr>
+                    <?php endwhile; ?>
                 </table>
             </div>
         </div>
