@@ -33,6 +33,7 @@ if (empty($phoneNumber)) {
 } elseif (strlen($phoneNumber) != 10 || !preg_match($pattern, $phoneNumber)) {
     header("Location: patient_registration.php?error=Phone Number is Invalid");
     exit();
+    
 }
 
 // age validation

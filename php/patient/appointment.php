@@ -60,22 +60,34 @@ include "../database.php";
                         <div class="input">
                             <label for="doctor">Select doctor :</label>
                             <select id="doctor" name="doctor">
-
+                                <option value=''>Select a category first</option>
+                            </select>
+                        </div>
+                        <div class="input">
+                            <label for="day">Select day :</label>
+                            <select id="day" name="day">
+                                <option value=''></option>
+                                <option value='SUNDAY'>SUNDAY</option>
+                                <option value='MONDAY'>MONDAY</option>
+                                <option value='TUESDAY'>TUESDAY</option>
+                                <option value='WEDNESDAY'>WEDNESDAY</option>
+                                <option value='THURSDAY'>THURSDAY</option>
+                                <option value='FRIDAY'>FRIDAY</option>
                             </select>
                         </div>
                         <div class="input">
                             <label for="time">Select time :</label>
                             <select id="time" name="time">
                                 <?php
-                                $sql = "SELECT times FROM times";
-                                $result = $conn->query($sql);
+                                // $sql = "SELECT times FROM times";
+                                // $result = $conn->query($sql);
 
-                                if ($result->num_rows > 0) {
-                                    // Output data of each row
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo "<option value='" . $row['times'] . "'>" . $row['times'] . "</option>";
-                                    }
-                                }
+                                // if ($result->num_rows > 0) {
+                                //     // Output data of each row
+                                //     while ($row = $result->fetch_assoc()) {
+                                //         echo "<option value='" . $row['times'] . "'>" . $row['times'] . "</option>";
+                                //     }
+                                // }
                                 ?>
                             </select>
                         </div>
