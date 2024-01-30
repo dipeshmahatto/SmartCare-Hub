@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2024 at 06:27 AM
+-- Generation Time: Jan 30, 2024 at 08:03 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -53,6 +53,7 @@ CREATE TABLE `appointment` (
   `category` varchar(55) NOT NULL,
   `doctor` varchar(55) NOT NULL,
   `app_time` varchar(255) NOT NULL,
+  `day` varchar(11) NOT NULL,
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -60,10 +61,10 @@ CREATE TABLE `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`aid`, `pid`, `category`, `doctor`, `app_time`, `status`) VALUES
-(2, 1, 'Dental', 'Dr.Sachin', '2 PM', 0),
-(3, 1, 'Dental', 'Dr.Surya', '11 AM', 0),
-(4, 1, 'Dental', 'Dr.Sachin', '11 AM', 0);
+INSERT INTO `appointment` (`aid`, `pid`, `category`, `doctor`, `app_time`, `day`, `status`) VALUES
+(2, 1, 'Dental', 'Dr.Sachin', '2 PM', 'SUNDAY', 0),
+(3, 1, 'Dental', 'Dr.Surya', '11 AM', 'MONDAY', 0),
+(4, 1, 'Dental', 'Dr.Sachin', '11 AM', 'SUNDAY', 0);
 
 -- --------------------------------------------------------
 
