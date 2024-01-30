@@ -26,7 +26,7 @@ if (
 //     exit();
 // }
 
-$sql = "INSERT INTO appointment(pid,category,doctor,app_time)values('$pid','$category','$doctor','$time')";
+$sql = "INSERT INTO appointment(pid,category,doctor,app_time,day)values('$pid','$category','$doctor','$time','$day')";
 $result = mysqli_query($conn, $sql);
 
 if ($result == 1) {

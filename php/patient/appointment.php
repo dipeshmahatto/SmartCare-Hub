@@ -79,15 +79,15 @@ include "../database.php";
                             <label for="time">Select time :</label>
                             <select id="time" name="time">
                                 <?php
-                                // $sql = "SELECT times FROM times";
-                                // $result = $conn->query($sql);
+                                $sql = "SELECT times FROM times";
+                                $result = $conn->query($sql);
 
-                                // if ($result->num_rows > 0) {
-                                //     // Output data of each row
-                                //     while ($row = $result->fetch_assoc()) {
-                                //         echo "<option value='" . $row['times'] . "'>" . $row['times'] . "</option>";
-                                //     }
-                                // }
+                                if ($result->num_rows > 0) {
+                                    // Output data of each row
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<option value='" . $row['times'] . "'>" . $row['times'] . "</option>";
+                                    }
+                                }
                                 ?>
                             </select>
                         </div>
