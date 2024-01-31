@@ -1,6 +1,13 @@
 <?php
 session_start();
 include("session_values.php");
+include("../database.php");
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: patient_login.php");
+    exit;
+}
+$app = "SELECT * FROM appointment WHERE pid='$id' AND status=1";
+$result = mysqli_query($conn, $app);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,16 +41,39 @@ include("session_values.php");
             <?php include("top.php") ?>
 
             <div class="table">
-                <table>
+            <table>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>phone number</th>
-                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Doctor Name</th>
+                        <th>Appointment time</th>
+                        <th>Day</th>
+                        <th>Status</th>
                     </tr>
+                    <?php
+                    while ($row = $result->fetch_assoc()):
+                    ?>
+                    <tr>
+                        <td>
+                            <?php echo $row["aid"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["category"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["doctor"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["app_time"] ?>
+                        </td>
+                        <td>
+                            <?php echo $row["day"]; ?>
+                        </td>
+                        <td>
+                            <?php echo "Completed"; ?>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
                 </table>
             </div>
         </div>

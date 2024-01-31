@@ -84,18 +84,20 @@ body {
 .table {
     display: block;
     padding-top: 50px;
+    
 }
 
-.table table,
-th,
-td {
+.table table,tr,th,td {
     border: 1px solid black;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    
 }
 
-table th,
+table, th,
 td {
     padding: 10px;
+   
 }

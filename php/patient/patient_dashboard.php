@@ -1,12 +1,13 @@
 <?php
 session_start();
+include("session_values.php");
+include("../database.php");
 // Check if the user is logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: patient_login.php");
     exit;
 }
-include("session_values.php");
-include("../database.php");
+
 
 
 // active appointments

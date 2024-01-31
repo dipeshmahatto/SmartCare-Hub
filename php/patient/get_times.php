@@ -4,7 +4,7 @@ include "../database.php";
 if (isset($_POST['doctor']) && isset($_POST['day'])) {
     $selectedDay = $_POST['day'];
     $selectedDoctor = $_POST['doctor'];
-    $sql = "SELECT app_time FROM appointment WHERE day = '$selectedDay' AND doctor = '$selectedDoctor'";
+    $sql = "SELECT app_time FROM appointment WHERE day = '$selectedDay' AND doctor = '$selectedDoctor' AND status=0";
     $timesql = "SELECT times FROM times";
     $result = $conn->query($sql);
     $result2 = $conn->query($timesql);

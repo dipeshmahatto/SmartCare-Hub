@@ -1,9 +1,13 @@
 <?php session_start();
-// Check if the user is logged in
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+include("session.php");
+include("../database.php");
+// Checking if the user is logged in
+if (!isset($_SESSION['doctorloggedin']) || $_SESSION['doctorloggedin'] !== true) {
     header("Location: doctor_login.php");
     exit;
 }
+$app = "SELECT * FROM appointment WHERE doctor='$DoctorfullName' AND status=0";
+$result = mysqli_query($conn, $app);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +26,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <div class="profile">
                 <img src="../../img/admin_profile.jpg" alt="">
                 <br>
-                <h3>Doctor</h3>
+                <h3><?php echo $DoctorfullName ?></h3>
             </div>
             <hr>
             <div class="operation">
@@ -34,15 +38,39 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <?php include("top.php") ?>
 
             <div class="table">
-                <table>
+            <table>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>phone number</th>
+                        <th>Category</th>
+                        <th>Doctor Name</th>
+                        <th>Appointment time</th>
+                        <th>Day</th>
+                        <th>Status</th>
                     </tr>
+                    <?php
+                    while ($row = $result->fetch_assoc()):
+                    ?>
+                    <tr>
+                        <td>
+                            <?php echo $row["aid"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["category"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["doctor"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $row["app_time"] ?>
+                        </td>
+                        <td>
+                            <?php echo $row["day"]; ?>
+                        </td>
+                        <td>
+                            <?php echo "x"; ?>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
                 </table>
             </div>
         </div>

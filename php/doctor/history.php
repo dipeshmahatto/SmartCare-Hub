@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+<?php session_start();
+include("session.php");
+include("../database.php");
+// Checking if the user is logged in
+if (!isset($_SESSION['doctorloggedin']) || $_SESSION['doctorloggedin'] !== true) {
+    header("Location: doctor_login.php");
+    exit;
+}
+$app = "SELECT * FROM appointment WHERE doctor='$DoctorfullName' AND status=1";
+$result = mysqli_query($conn, $app);
+?>
+
 <html lang="en">
 
 <head>
@@ -15,7 +26,7 @@
             <div class="profile">
                 <img src="../../img/admin_profile.jpg" alt="">
                 <br>
-                <h3>Doctor</h3>
+                <h3><?php echo $DoctorfullName ?></h3>
             </div>
             <hr>
             <div class="operation">
@@ -29,14 +40,51 @@
             <div class="table">
                 <table>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>phone number</th>
-                        <th>Date</th>
+                        <th>Appointment Id</th>
+                        <th>Patient Name</th>
+                        <th>Category</th>
+                        <th>Doctor Name</th>
+                        <th>Appointment time</th>
+                        <th>Day</th>
+                        <th>Status</th>
                     </tr>
+                    <?php
+                    while ($row = $result->fetch_assoc()):
+                        ?>
+                        <tr>
+                            <td>
+                                <?php echo $row["aid"]; ?>
+                            </td>
+                            <td>
+                                <?php
+                                $pid = $row['pid']; 
+                                $patientQuery = "SELECT fullName FROM patient WHERE id='$pid'";
+                                $patientResult = mysqli_query($conn, $patientQuery);
+
+                                if ($patientResult) {
+                                    $roww = mysqli_fetch_assoc($patientResult); 
+                                    $fullName = $roww['fullName']; // Geting the full name
+                                    echo $fullName;
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php echo $row['category']; ?>
+                            </td>
+                            <td>
+                                <?php echo $row["doctor"]; ?>
+                            </td>
+                            <td>
+                                <?php echo $row["app_time"] ?>
+                            </td>
+                            <td>
+                                <?php echo $row["day"]; ?>
+                            </td>
+                            <td>
+                                <?php echo "Completed"; ?>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
                 </table>
             </div>
         </div>
