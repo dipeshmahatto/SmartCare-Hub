@@ -1,5 +1,10 @@
 <?php
+session_start();
 include "../database.php";
+if (!isset($_SESSION['Adminloggedin']) || $_SESSION['Adminloggedin'] !== true) {
+    header("Location: admin_login.php");
+    exit;
+}
 $sql = "SELECT * FROM patient";
 $result = mysqli_query($conn, $sql);
 ?>

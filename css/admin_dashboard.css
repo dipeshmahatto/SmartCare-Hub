@@ -15,12 +15,14 @@ body {
 }
 
 .nav {
-    width: 20%;
-    /* height: 100vh; */
+    width: 20vw;
+    box-shadow: 0 10px 10px;
+    font-size: larger;
 }
 
 .content {
-    width: 80%;
+    width: 80vw;
+
 }
 
 .profile {
@@ -33,14 +35,13 @@ body {
 }
 
 .profile img {
-    height: 150px;
-    width: 150px;
+    height: 20vh;
+    width: 20vh;
     border-radius: 50%;
 }
 
 .operation {
     display: block;
-    height: 70%;
     width: 100%;
     text-align: center;
     /* background-color: brown; */
@@ -84,21 +85,31 @@ body {
 }
 
 .top {
-    height: 10%;
-    background-color: bisque;
+    height: 10vh;
+    background: linear-gradient(135deg, rgba(236, 93, 201, 0.75), rgba(0, 0, 255, 0.25));
     text-align: right;
     display: flex;
     justify-content: right;
     align-items: center;
+    border-radius: 15px;
+    box-shadow: 5px 5px 25px;
 }
 
 .top a {
     margin-right: 30px;
+    text-decoration: none;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.top a:hover {
+    background-color: rgb(240, 60, 60);
+    color: black;
 }
 
 .middle {
-    height: 30%;
-    /* background-color: blueviolet; */
+    height: 30vh;
     display: flex;
 }
 
@@ -110,12 +121,24 @@ body {
     padding-right: 30px;
     align-items: center;
     font-size: 70px;
-    background-color: rgb(133, 127, 127);
+    border-radius: 45px;
+    box-shadow: 10px 10px 15px;
 }
 
-.middle .list .fa-solid,
-.fas {
-    font-size: 100px;
+#doc {
+    background: linear-gradient(135deg, #8dd78d 85%, #f5f5f5 15%);
+}
+
+#pat {
+    background: linear-gradient(135deg, #b19cd9 85%, #f5f5f5 15%);
+}
+
+#app {
+    background: linear-gradient(135deg, #ffe07a 85%, #f5f5f5 15%);
+}
+
+.middle .list .fa-solid {
+    font-size: 20vh;
 }
 
 .middle .list h3 {
@@ -142,21 +165,34 @@ table th,
 td {
     padding: 10px;
 }
-table button{
+
+table button {
     padding: 5px;
     margin: 5px;
     color: rgb(255, 254, 254);
     font-size: larger;
 }
-.reject{
+
+.reject {
     background-color: rgb(244, 10, 10);
 }
-.reject:hover{
+
+.reject:hover {
     background-color: rgb(144, 22, 22);
 }
-.approve{
+
+.approve {
     background-color: rgba(28, 183, 31, 0.758);
 }
-.approve:hover{
+
+.approve:hover {
     background-color: rgb(13, 96, 13);
+}
+
+.fa-bed-pulse {
+    color: #7d0c0c;
+}
+
+.fa-person-circle-check {
+    color: #627dff;
 }

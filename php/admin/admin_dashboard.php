@@ -1,7 +1,7 @@
 <?php 
 session_start();
 // Check if the user is logged in
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+if (!isset($_SESSION['Adminloggedin']) || $_SESSION['Adminloggedin'] !== true) {
     header("Location: admin_login.php");
     exit;
 }
@@ -50,19 +50,19 @@ $approvals = $count3->fetch_assoc()['approve'];
         <div class="content">
             <?php include("top.php") ?>
             <div class="middle">
-                <div class="list">
+                <div class="list" id="doc">
                     <h3>
                         <?php echo $doctors; ?>
                     </h3>
                     <i class="fa-solid fa-user-doctor"></i>
                 </div>
-                <div class="list">
+                <div class="list" id="pat">
                     <h3>
                         <?php echo $patients; ?>
                     </h3>
                     <i class="fa-solid fa-bed-pulse"></i>
                 </div>
-                <div class="list">
+                <div class="list" id="app">
                     <h3>
                         <?php echo $approvals; ?>
                     </h3>
@@ -70,7 +70,7 @@ $approvals = $count3->fetch_assoc()['approve'];
                 </div>
             </div>
             <div class="table">
-                <table>
+                <!-- <table>
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
@@ -79,7 +79,7 @@ $approvals = $count3->fetch_assoc()['approve'];
                         <th>Gender</th>
                         <th>phone number</th>
                     </tr>
-                </table>
+                </table> -->
             </div>
         </div>
     </div>

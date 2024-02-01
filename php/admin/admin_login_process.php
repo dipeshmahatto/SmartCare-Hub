@@ -13,7 +13,7 @@ if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
     $_SESSION['id'] = $row['id'];
     $_SESSION['user_name'] = $row['user_name'];
-    $_SESSION['loggedin'] = true;
+    $_SESSION['Adminloggedin'] = true;
     header('Location:admin_dashboard.php');
 } else {
     header("Location: admin_login.php?error=Username and Password Does Not Match");

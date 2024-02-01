@@ -33,8 +33,8 @@ body {
 }
 
 .profile img {
-    height: 150px;
-    width: 150px;
+    height: 20vh;
+    width: 20vh;
     border-radius: 50%;
 }
 .operation {
@@ -42,7 +42,6 @@ body {
     height: 70%;
     width: 100%;
     text-align: center;
-    /* background-color: brown; */
 }
 
 .operation a {

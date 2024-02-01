@@ -54,11 +54,11 @@
       <!-- Gender  -->
       <span class="gender">Gender</span>
       <div class="genders">
-        <input type="radio" name="gender" id="male" value="m" required>
+        <input type="radio" name="gender" id="male" value="M" required>
         <label for="male">Male</label>
-        <input type="radio" name="gender" id="female" value="f">
+        <input type="radio" name="gender" id="female" value="F">
         <label for="female">Female</label>
-        <input type="radio" name="gender" id="other" value="o">
+        <input type="radio" name="gender" id="other" value="O">
         <label for="other">Other</label>
       </div>
 
