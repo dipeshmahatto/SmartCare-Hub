@@ -8,11 +8,11 @@
     <title>footer</title>
 </head>
 
-<body>
+<body class="footer">
     <hr>
     <div class="section">
         <div id="logo_section">
-            <img src="../img/logo.jpg" alt="image not found">
+            <img src="../img/logo.png" alt="image not found">
             <h4>The SmartCare Hub is a web application which provides the quickest and easiest way to book appointment
                 with top doctors of nepal.</h4>
         </div>

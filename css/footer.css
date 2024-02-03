@@ -1,7 +1,8 @@
+
 .section {
     display: inline-flex;
     margin: auto;
-    width: 100%;
+    width: 90vw;
     text-align: center;
 }
 
