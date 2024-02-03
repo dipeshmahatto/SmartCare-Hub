@@ -100,3 +100,18 @@ td {
     padding: 10px;
    
 }
+table button {
+    padding: 5px;
+    margin: 5px;
+    color: rgb(255, 254, 254);
+    font-size: larger;
+}
+
+.completed {
+    background-color: rgba(58, 217, 66, 0.758);
+}
+
+.completed:hover {
+    background-color: rgb(16, 237, 16);
+    color: black;
+}

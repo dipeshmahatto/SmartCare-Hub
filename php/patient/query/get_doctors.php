@@ -1,5 +1,5 @@
 <?php
-include "../database.php";
+include "../../database.php";
 
 if (isset($_POST['category'])) {
     $selectedCategory = $_POST['category'];

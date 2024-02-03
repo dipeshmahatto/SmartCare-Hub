@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <h1>Patient</h1>
-    <form action="patient_registration_process.php" method="post">
+    <form action="query/patient_registration_process.php" method="post">
       <div class="register_box">
         <!-- Full name  -->
         <div class="input">

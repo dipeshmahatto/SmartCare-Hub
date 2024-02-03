@@ -10,7 +10,7 @@
 <body>
   <div class="container">
     <h1>Admin</h1>
-    <form  onsubmit="validateForm()" action="admin_login_process.php" method="post">
+    <form  onsubmit="validateForm()" action="query/admin_login_process.php" method="post">
       <div class="login_box">
         <div class="input">
           <label for="username">Username</label>

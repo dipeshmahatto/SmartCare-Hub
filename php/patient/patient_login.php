@@ -11,7 +11,7 @@
 <body>
   <div class="container">
     <h1>Patient</h1>
-    <form onsubmit="validateForm()" action="patient_login_process.php" method="post">
+    <form onsubmit="validateForm()" action="query/patient_login_process.php" method="post">
       <div class="login_box">
         <div class="input">
           <label for="phoneNumber">Phone Number</label>

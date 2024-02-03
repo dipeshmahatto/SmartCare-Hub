@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("session_values.php");
+include("query/session_values.php");
 include("../database.php");
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: patient_login.php");

@@ -1,5 +1,5 @@
 <?php
-include "../database.php";
+include "../../database.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST["id"];
 }
@@ -25,11 +25,11 @@ if (isset($_POST["approve"])) {
 } elseif (isset($_POST["reject"])) {
     // Perform actions for rejecting the user with the given ID
     $sql = "DELETE FROM doctor_approval WHERE id = $id";
-    header("Location: approval.php");
+    header("Location: ../approval.php");
 }
 
 if ($conn->query($sql) === TRUE&& $conn->query($sqll) === TRUE) {
-    header("Location: approval.php");
+    header("Location: ../approval.php");
 }
 $conn->close();
 ?>

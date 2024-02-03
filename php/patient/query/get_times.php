@@ -1,5 +1,5 @@
 <?php
-include "../database.php";
+include "../../database.php";
 
 if (isset($_POST['doctor']) && isset($_POST['day'])) {
     $selectedDay = $_POST['day'];

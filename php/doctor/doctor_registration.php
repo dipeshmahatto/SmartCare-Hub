@@ -47,7 +47,7 @@
         <div class="input">
           <label for="speciality">Speciality</label>
           <select id="speciality" name="speciality">
-            <option value=""></option>
+            <option value="" disabled selected>Select your speciality</option>
             <option value="Surgery">Surgery</option>
             <option value="Dental">Dental</option>
             <option value="Ophthalmology">Ophthalmology</option>
@@ -57,7 +57,7 @@
         <div class="input">
           <label for="qualification">Qualification</label>
           <select id="qualification" name="qualification">
-            <option value=""></option>
+            <option value=""disabled selected>Select your qualification</option>
             <option value="MBBS">MBBS</option>
             <option value="MD">MD</option>
             <option value="PHD">PHD</option>
@@ -77,11 +77,11 @@
       <!-- Gender  -->
       <span class="gender">Gender</span>
       <div class="genders">
-        <input type="radio" name="gender" id="male" value="m" required>
+        <input type="radio" name="gender" id="male" value="M" required>
         <label for="male">Male</label>
-        <input type="radio" name="gender" id="female" value="f">
+        <input type="radio" name="gender" id="female" value="F">
         <label for="female">Female</label>
-        <input type="radio" name="gender" id="other" value="o">
+        <input type="radio" name="gender" id="other" value="O">
         <label for="other">Other</label>
       </div>
 

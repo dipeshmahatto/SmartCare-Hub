@@ -1,4 +1,3 @@
-
 .section {
     display: inline-flex;
     margin: auto;
@@ -7,7 +6,7 @@
 }
 
 #logo_section {
-    width: 25%;
+    width: 35%;
 }
 
 #logo_section img {
@@ -16,18 +15,15 @@
 }
 
 #quick_login {
-    width: 25%;
+    width: 35%;
 }
 
-#service_section {
-    width: 25%;
-}
 
 a {
     text-decoration: none;
     font-size: larger;
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
     display: block;
 }
 a:hover{
@@ -36,7 +32,7 @@ a:hover{
 }
 
 #GIT {
-    width: 25%;
+    width: 30%;
 }
 
 footer {

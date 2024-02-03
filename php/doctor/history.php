@@ -1,5 +1,5 @@
 <?php session_start();
-include("session.php");
+include("query/session.php");
 include("../database.php");
 // Checking if the user is logged in
 if (!isset($_SESSION['doctorloggedin']) || $_SESSION['doctorloggedin'] !== true) {

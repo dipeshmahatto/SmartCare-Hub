@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../database.php";
+include "../../database.php";
 if (isset($_POST['phoneNumber']) && isset($_POST['password'])) {
     $phoneNumber = $_POST['phoneNumber'];
     $password = $_POST['password'];
@@ -14,7 +14,7 @@ if (mysqli_num_rows($result) == 1) {
     $_SESSION['DoctorfullName'] = $row['fullName'];
     $_SESSION['phoneNumber'] = $row['phoneNumber'];
     $_SESSION['doctorloggedin'] = true;
-    header('Location:doctor_dashboard.php');
+    header('Location:../doctor_dashboard.php');
 } else {
     header("Location: doctor_login.php?error=Phone Number and Password Does Not Match");
     exit();

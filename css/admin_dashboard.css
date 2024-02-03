@@ -92,7 +92,7 @@ body {
     justify-content: right;
     align-items: center;
     border-radius: 15px;
-    box-shadow: 5px 5px 25px;
+    box-shadow: 5px 2px 5px;
 }
 
 .top a {
@@ -142,7 +142,7 @@ body {
 }
 
 .middle .list h3 {
-    margin-right: 90px;
+    margin-right: 5vw;
 }
 
 .table {
@@ -164,6 +164,10 @@ td {
 table th,
 td {
     padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #c2c2c2;
 }
 
 table button {

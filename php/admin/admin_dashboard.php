@@ -1,23 +1,11 @@
-<?php 
+<?php
 session_start();
 // Check if the user is logged in
 if (!isset($_SESSION['Adminloggedin']) || $_SESSION['Adminloggedin'] !== true) {
     header("Location: admin_login.php");
     exit;
 }
-include "../database.php";
-//counting doctors from database
-$sql = "SELECT COUNT(*) AS doctors FROM doctor";
-$count1 = mysqli_query($conn, $sql);
-$doctors = $count1->fetch_assoc()['doctors'];
-// counting patients from database 
-$sql = "SELECT COUNT(*) AS patient FROM patient";
-$count2 = mysqli_query($conn, $sql);
-$patients = $count2->fetch_assoc()['patient'];
-// counting doctors registration to be verifed by admin from database 
-$sql = "SELECT COUNT(*) AS approve FROM doctor_approval";
-$count3 = mysqli_query($conn, $sql);
-$approvals = $count3->fetch_assoc()['approve'];
+include "query/counts.php";
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +32,8 @@ $approvals = $count3->fetch_assoc()['approve'];
                 <a href="#" class="dashboard"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
                 <a href="doctor_list.php "><i class="fa-solid fa-user-doctor"></i>Doctor</a>
                 <a href="patient_list.php"><i class="fa-solid fa-bed-pulse"></i>Patient</a>
-                <a href="approval.php"><i class="fa-solid fa-person-circle-check"></i> Approvel</a>
+                <a href="approval.php"><i class="fa-solid fa-person-circle-check"></i> Approval (<?php echo $approvals; ?>)
+                </a>
             </div>
         </div>
         <div class="content">

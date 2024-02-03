@@ -81,6 +81,7 @@ body {
 .table {
     display: block;
     padding-top: 50px;
+    text-align: center;
 }
 
 .table table,
@@ -167,4 +168,19 @@ td {
 .submit input:hover {
     background: rgb(0, 216, 254);
     color: rgb(0, 0, 0);
+}
+table button {
+    padding: 5px;
+    margin: 5px;
+    color: rgb(255, 254, 254);
+    font-size: larger;
+}
+
+.cancel {
+    background-color: rgba(58, 217, 66, 0.758);
+}
+
+.cancel:hover {
+    background-color: rgb(16, 237, 16);
+    color: black;
 }

@@ -4,7 +4,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: patient_login.php");
     exit;
 }
-include("session_values.php");
+include("query/session_values.php");
 include "../database.php";
 ?>
 <html lang="en">
@@ -37,7 +37,7 @@ include "../database.php";
         <div class="content">
             <?php include("top.php") ?>
             <div class="form">
-                <form action="appointment_process.php" method="post">
+                <form action="query/appointment_process.php" method="post">
                     <div class="appointment">
                         <div class="input">
                             <label for="category">Select category :</label>
@@ -89,7 +89,7 @@ include "../database.php";
         $('#category').change(function () {
             var selectedCategory = $(this).val();
             $.ajax({
-                url: 'get_doctors.php',
+                url: 'query/get_doctors.php',
                 type: 'POST',
                 data: { category: selectedCategory },
                 success: function (response) {
@@ -105,7 +105,7 @@ include "../database.php";
             var selectedDay = $(this).val();
             var selectedDoctor = $('#doctor').val();
             $.ajax({
-                url: 'get_times.php',
+                url: 'query/get_times.php',
                 type: 'POST',
                 data: { doctor: selectedDoctor, day: selectedDay },
                 success: function (response) {

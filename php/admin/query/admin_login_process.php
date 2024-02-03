@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../database.php";
+include "../../database.php";
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -14,9 +14,9 @@ if (mysqli_num_rows($result) == 1) {
     $_SESSION['id'] = $row['id'];
     $_SESSION['user_name'] = $row['user_name'];
     $_SESSION['Adminloggedin'] = true;
-    header('Location:admin_dashboard.php');
+    header('Location:../admin_dashboard.php');
 } else {
-    header("Location: admin_login.php?error=Username and Password Does Not Match");
+    header("Location: ../admin_login.php?error=Username and Password Does Not Match");
     exit();
 }
 ?>

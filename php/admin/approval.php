@@ -84,7 +84,7 @@ $result = mysqli_query($conn, $sql);
                                 <?= $row["phoneNumber"] ?>
                             </td>
                             <td>
-                                <form method="post" action="approve.php">
+                                <form method="post" action="query/approve.php">
                                     <input type="hidden" name="id" value="<?= $row["id"] ?>">
                                     <button type="submit" name="approve" class="approve">Approve</button>
                                     <button type="submit" name="reject" class="reject">Reject</button>

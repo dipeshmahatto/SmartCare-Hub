@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../database.php";
+include "query/counts.php";
 if (!isset($_SESSION['Adminloggedin']) || $_SESSION['Adminloggedin'] !== true) {
     header("Location: admin_login.php");
     exit;
@@ -32,7 +32,7 @@ $result = mysqli_query($conn, $sql);
                 <a href="admin_dashboard.php"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
                 <a href="doctor_list.php" class="doctor"><i class="fa-solid fa-user-doctor"></i>Doctor</a>
                 <a href="patient_list.php"><i class="fa-solid fa-bed-pulse"></i>Patient</a>
-                <a href="approval.php"><i class="fa-solid fa-person-circle-check"></i> Approvel</a>
+                <a href="approval.php"><i class="fa-solid fa-person-circle-check"></i> Approval (<?php echo $approvals;?>)</a>
             </div>
         </div>
         <div class="content">

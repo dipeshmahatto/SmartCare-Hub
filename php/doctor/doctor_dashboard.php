@@ -1,5 +1,5 @@
 <?php session_start();
-include("session.php");
+include("query/session.php");
 include("../database.php");
 // Checking if the user is logged in
 if (!isset($_SESSION['doctorloggedin']) || $_SESSION['doctorloggedin'] !== true) {
@@ -26,7 +26,9 @@ $result = mysqli_query($conn, $app);
             <div class="profile">
                 <img src="../../img/admin_profile.jpg" alt="">
                 <br>
-                <h3><?php echo $DoctorfullName ?></h3>
+                <h3>
+                    <?php echo $DoctorfullName ?>
+                </h3>
             </div>
             <hr>
             <div class="operation">
@@ -38,9 +40,9 @@ $result = mysqli_query($conn, $app);
             <?php include("top.php") ?>
 
             <div class="table">
-            <table>
+                <table>
                     <tr>
-                        <th>Id</th>
+                        <th>Appointment Id</th>
                         <th>Category</th>
                         <th>Doctor Name</th>
                         <th>Appointment time</th>
@@ -49,27 +51,30 @@ $result = mysqli_query($conn, $app);
                     </tr>
                     <?php
                     while ($row = $result->fetch_assoc()):
-                    ?>
-                    <tr>
-                        <td>
-                            <?php echo $row["aid"]; ?>
-                        </td>
-                        <td>
-                            <?php echo $row["category"]; ?>
-                        </td>
-                        <td>
-                            <?php echo $row["doctor"]; ?>
-                        </td>
-                        <td>
-                            <?php echo $row["app_time"] ?>
-                        </td>
-                        <td>
-                            <?php echo $row["day"]; ?>
-                        </td>
-                        <td>
-                            <?php echo "x"; ?>
-                        </td>
-                    </tr>
+                        ?>
+                        <tr>
+                            <td>
+                                <?php echo $row["aid"]; ?>.
+                            </td>
+                            <td>
+                                <?php echo $row["category"]; ?>
+                            </td>
+                            <td>
+                                <?php echo $row["doctor"]; ?>
+                            </td>
+                            <td>
+                                <?php echo $row["app_time"] ?>
+                            </td>
+                            <td>
+                                <?php echo $row["day"]; ?>
+                            </td>
+                            <td>
+                                <form method="post" action="query/completed.php">
+                                    <input type="hidden" name="id" value="<?= $row["aid"] ?>">
+                                    <button type="submit" name="completed" class="completed">completed</button>
+                                </form>
+                            </td>
+                        </tr>
                     <?php endwhile; ?>
                 </table>
             </div>

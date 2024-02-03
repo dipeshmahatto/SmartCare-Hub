@@ -22,10 +22,6 @@
             <a href="doctor/doctor_login.php">Doctor</a><br>
             <a href="patient/patient_login.php">Patient</a>
         </div>
-        <div id="service_section">
-            <h3>Services</h3>
-            <a href="#">Book An Appointment</a>
-        </div>
         <div id="GIT">
             <h3>Get in touch</h3>
             <h4>+977 9803643491,    </h4>
