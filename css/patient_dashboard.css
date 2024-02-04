@@ -66,16 +66,27 @@ body {
 }
 
 .top {
-    height: 10%;
-    background-color: bisque;
+    height: 10vh;
+    background: linear-gradient(135deg, rgba(236, 93, 201, 0.75), rgba(0, 0, 255, 0.25));
     text-align: right;
     display: flex;
     justify-content: right;
     align-items: center;
+    border-radius: 15px;
+    box-shadow: 5px 2px 5px;
 }
 
 .top a {
     margin-right: 30px;
+    text-decoration: none;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.top a:hover {
+    background-color: rgb(240, 60, 60);
+    color: black;
 }
 
 .table {
