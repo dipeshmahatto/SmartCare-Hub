@@ -34,18 +34,19 @@ if (empty($fullName)) {
 if (empty($phoneNumber)) {
     header("Location: ../doctor_registration.php?error=Phone Number is Required");
     exit();
-} elseif (strlen($phoneNumber) != 10 || !preg_match($pattern, $phoneNumber)) {
+} elseif (strlen($phoneNumber) == 10 || preg_match($pattern, $phoneNumber)) {
+    $phoneNumberCheckQuery = "SELECT phoneNumber FROM doctor WHERE phoneNumber='$phoneNumber'";
+    $phoneNumberCheckResult = mysqli_query($conn, $phoneNumberCheckQuery);
+
+    if (mysqli_num_rows($phoneNumberCheckResult) > 0) {
+        echo "<script>alert('This Phone Number is Already in use');</script>";
+        echo "<script>window.location.href = '../doctor_registration.php';</script>";
+        exit();
+    }
+} else {
     header("Location: ../doctor_registration.php?error=Phone Number is Invalid");
     exit();
-} 
-// else {
-//     $phoneNumberCheck = "SELECT phoneNumber from doctor where phoneNumber='$phoneNumber'";
-//     if (mysqli_query($conn, $phoneNumberCheck)) {
-//         echo "<script>alert('This Phone Number is Already in use');</script>";
-//         echo "<script>window.location.href = '../doctor_registration.php';</script>";
-//         exit();
-//     }
-// }
+}
 
 // age validation
 if (empty($age)) {

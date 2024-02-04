@@ -115,7 +115,7 @@ body {
 
 .middle .list {
     margin: 20px;
-    width: 30%;
+    width: 40vw;
     display: flex;
     justify-content: right;
     padding-right: 30px;
@@ -142,7 +142,7 @@ body {
 }
 
 .middle .list h3 {
-    margin-right: 5vw;
+    margin-right: 4vw;
 }
 
 .table {

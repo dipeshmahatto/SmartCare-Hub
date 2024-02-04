@@ -11,7 +11,7 @@
 <body>
   <div class="container">
     <h1>Doctor</h1>
-    <form onsubmit="wating()" action="doctor_registration_process.php" method="post">
+    <form onsubmit="wating()" action="query/doctor_registration_process.php" method="post">
       <div class="register_box">
         <!-- Full name  -->
         <div class="input">
