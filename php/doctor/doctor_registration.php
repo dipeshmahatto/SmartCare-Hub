@@ -26,7 +26,7 @@
         <!-- Phone number  -->
         <div class="input">
           <label for="phoneNumber">Phone Number</label>
-          <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" required />
+          <input type="text" id="phoneNumber" name="phoneNumber" maxlength="10" placeholder="Enter Phone Number" required />
         </div>
         <!-- Age  -->
         <div class="input">

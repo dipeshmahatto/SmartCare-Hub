@@ -32,7 +32,9 @@ $result = mysqli_query($conn, $sql);
                 <a href="admin_dashboard.php"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
                 <a href="doctor_list.php" class="doctor"><i class="fa-solid fa-user-doctor"></i>Doctor</a>
                 <a href="patient_list.php"><i class="fa-solid fa-bed-pulse"></i>Patient</a>
-                <a href="approval.php"><i class="fa-solid fa-person-circle-check"></i> Approval (<?php echo $approvals;?>)</a>
+                <a href="approval.php"><i class="fa-solid fa-person-circle-check"></i> Approval (
+                    <?php echo $approvals; ?>)
+                </a>
             </div>
         </div>
         <div class="content">
@@ -48,6 +50,7 @@ $result = mysqli_query($conn, $sql);
                         <th>phone number</th>
                         <th>Qualification</th>
                         <th>Speciality</th>
+                        <th>Operation</th>
                     </tr>
 
                     <?php while ($row = $result->fetch_assoc()): ?>
@@ -75,6 +78,13 @@ $result = mysqli_query($conn, $sql);
                             </td>
                             <td>
                                 <?= $row["speciality"] ?>
+                            </td>
+                            <td>
+                                <form action="query/delete.php" method="post">
+                                    <input type="hidden" name="id" value="<?= $row["id"] ?>">
+                                    <input type="hidden" name="fullName" value="<?= $row["fullName"]?>">
+                                    <button type="submit" name="delete" class="delete">Remove</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endwhile; ?>

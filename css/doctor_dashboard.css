@@ -116,6 +116,7 @@ table button {
     margin: 5px;
     color: rgb(255, 254, 254);
     font-size: larger;
+    border-radius: 15px;
 }
 
 .completed {

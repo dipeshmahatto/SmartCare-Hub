@@ -14,29 +14,24 @@ $result = mysqli_query($conn, $sql);
 
 <body>
     <div class="container">
-
-
-
-
-
         <div class="doctors">
-        <?php while($row = $result->fetch_assoc()): ?>
-            <div class="list" id="doc">
-                <img src="../img/admin_profile.jpg" alt="Image Not Found">
-                
-                <h3>
-                    <?php echo "Name :"." ".$row['fullName']; ?>
-                </h3>
-                <h4>
-                    <?php echo "Speciality :"." ".$row['speciality']; ?>
-                </h4>
-                <h4>
-                    <?php echo "Qualification :"." ".$row['qualification']; ?>
-                </h4>
-                <h4>
-                    <?php echo "Email :"." ".$row['email']; ?>
-                </h4>
-            </div>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <div class="list" id="doc">
+                    <img src="../img/admin_profile.jpg" alt="Image Not Found">
+
+                    <h3>
+                        <?php echo "Name :" . " " . $row['fullName']; ?>
+                    </h3>
+                    <p>
+                        <?php echo "Speciality :" . " " . $row['speciality']; ?>
+                    <p>
+                    <p>
+                        <?php echo "Qualification :" . " " . $row['qualification']; ?>
+                    </p>
+                    <p>
+                        <?php echo "Email :" . " " . $row['email']; ?>
+                    </p>
+                </div>
             <?php endwhile; ?>
         </div>
     </div>

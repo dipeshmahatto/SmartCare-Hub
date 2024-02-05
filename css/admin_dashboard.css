@@ -148,7 +148,7 @@ body {
 .table {
     display: block;
     padding-top: 30px;
-    font-size: larger;
+    font-size: large;
 }
 
 .table table,
@@ -163,7 +163,7 @@ td {
 
 table th,
 td {
-    padding: 10px;
+    padding: 8px;
 }
 
 tr:nth-child(even) {
@@ -174,7 +174,8 @@ table button {
     padding: 5px;
     margin: 5px;
     color: rgb(255, 254, 254);
-    font-size: larger;
+    font-size: medium;
+    border-radius: 15px;
 }
 
 .reject {
@@ -182,6 +183,12 @@ table button {
 }
 
 .reject:hover {
+    background-color: rgb(144, 22, 22);
+}
+.delete {
+    background-color: rgb(244, 10, 10);
+}
+.delete:hover {
     background-color: rgb(144, 22, 22);
 }
 
