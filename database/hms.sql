@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2024 at 08:03 AM
+-- Generation Time: Feb 05, 2024 at 07:23 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -62,9 +62,14 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`aid`, `pid`, `category`, `doctor`, `app_time`, `day`, `status`) VALUES
-(2, 1, 'Dental', 'Dr.Sachin', '2 PM', 'SUNDAY', 0),
+(2, 1, 'Dental', 'Dr.Sachin', '2 PM', 'SUNDAY', 1),
 (3, 1, 'Dental', 'Dr.Surya', '11 AM', 'MONDAY', 0),
-(4, 1, 'Dental', 'Dr.Sachin', '11 AM', 'SUNDAY', 0);
+(4, 1, 'Dental', 'Dr.Sachin', '11 AM', 'SUNDAY', 1),
+(6, 1, 'Radiology', 'Dr.santosh', '12 PM', 'WEDNESDAY', 0),
+(7, 2, 'Ophthalmology', 'Rnjish', '12 PM', 'FRIDAY', 1),
+(8, 1, 'Dental', 'Dr.Sachin', '1 PM', 'WEDNESDAY', 1),
+(10, 12, 'Radiology', 'Dr.santosh', '12 PM', 'TUESDAY', 1),
+(12, 4, 'Surgery', 'susmita', '11 AM', 'SUNDAY', 1);
 
 -- --------------------------------------------------------
 
@@ -91,11 +96,12 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`id`, `fullName`, `email`, `phoneNumber`, `age`, `birthYear`, `address`, `speciality`, `qualification`, `password`, `gender`) VALUES
-(5, 'Dr.Dipesh', 'dipeshmahatto@gmail.com', '9745837908', 31, 2003, 'kalimati', 'leg', 'mbbs', '12345678', 'm'),
-(6, 'Dr.jatin', 'jatin@gmail.com', '9811223344', 26, 1998, 'baneswor', 'bone', 'md', 'jatin123', 'm'),
 (9, 'Dr.Surya', 'suryanarayan2056@gmail.com', '9812002295', 31, 1993, 'kalimati', 'Dental', 'MD', 'surya123', 'm'),
 (10, 'Dr.Sachin', 'sachin@gamil.com', '9819800670', 35, 1992, 'kathmandu', 'Dental', 'MD', 'sachin123', 'm'),
-(11, 'Rnjish', 'ranjish12@gmail.com', '9874562130', 42, 1992, 'kalimati', 'Ophthalmology', 'BDS', '12345678', 'm');
+(14, 'Dr.Rupesh', 'rupesh@gmail.com', '9814157899', 31, 1991, 'bardiwas', 'Surgery', 'PHD', '12345678', 'm'),
+(15, 'Dr.Aaryan', 'aaryan@gmail.com', '9819800000', 31, 1993, 'bafal', 'Radiology', 'PHD', '12345678', 'M'),
+(16, 'Dr.Suraj', 'suraj@gmail.com', '9745837908', 35, 1993, 'kathmandu', 'Ophthalmology', 'MBBS', '12345678', 'M'),
+(17, 'susmita', 'susmita@gmail.com', '9841123044', 29, 1993, 'kritipur', 'Surgery', 'MD', '12345678', 'F');
 
 -- --------------------------------------------------------
 
@@ -220,13 +226,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `doctor_approval`
 --
 ALTER TABLE `doctor_approval`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `patient`
