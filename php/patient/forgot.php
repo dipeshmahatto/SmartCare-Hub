@@ -23,6 +23,10 @@
                 <input type="submit" value="Submit">
             </div>
         </form>
+        <div class="home">
+            <a href="../index.php">Home</a>
+        </div>
     </div>
 </body>
+
 </html>

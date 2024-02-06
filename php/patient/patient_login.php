@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="forgot">
-        <a href="#">Forgot Password ?</a>
+        <a href="forgot.php">Forgot Password ?</a>
       </div>
       <div class="submit">
         <input type="submit" value="Login">
