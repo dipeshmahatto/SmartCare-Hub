@@ -14,11 +14,11 @@
         <form action="query/password.php" method="post">
             <div class="inputbox">
                 <label for="newPassword">New Password:</label>
-                <input type="text" id="newPassword" name="newPassword" required>
+                <input type="text" id="newPassword" name="newPassword" placeholder="Enter new password" required>
             </div>
             <div class="inputbox">
                 <label for="confirmPassword">Confirm Password:</label>
-                <input type="text" id="confirmPassword" name="confirmPassword" required>
+                <input type="text" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
             </div>
             <div class="submit">
                 <input type="submit" value="Submit">

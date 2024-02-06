@@ -13,16 +13,19 @@
         <form action="query/verify_user.php" method="post">
             <div class="inputbox">
                 <label for="phoneNumber">Mobile Number :</label>
-                <input type="text" id="phoneNumber" name="phoneNumber" maxlength="10" required>
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your registred number" minlength="10" maxlength="10" required>
             </div>
             <div class="inputbox">
                 <label for="birthYear">Birth Year:</label>
-                <input type="text" id="birthYear" name="birthYear" required>
+                <input type="text" id="birthYear" placeholder="Enter your Birth Year" name="birthYear" required>
             </div>
             <div class="submit">
                 <input type="submit" value="Submit">
             </div>
         </form>
+        <div class="home">
+            <a href="../index.php">Home</a>
+        </div>
     </div>
 </body>
 </html>
