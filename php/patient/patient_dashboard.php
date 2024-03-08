@@ -29,6 +29,7 @@ $result = mysqli_query($conn, $app);
     <div class="container">
         <div class="nav">
             <div class="profile">
+                <!-- Profile img are shown using database  -->
                 <img src="../../img/admin_profile.jpg" alt="">
                 <br>
                 <h3>
