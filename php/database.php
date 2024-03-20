@@ -1,4 +1,5 @@
 <?php
+// This is database connection query
 $host="localhost";
 $unamee="root";
 $passwordd="";
