@@ -4,7 +4,6 @@ $sql = "SELECT * FROM doctor";
 $result = mysqli_query($conn, $sql);
 ?>
 
-// git push
 
 <!DOCTYPE html>
 <html lang="en">
