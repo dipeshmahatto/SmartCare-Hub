@@ -5,6 +5,8 @@ $result = mysqli_query($conn, $sql);
 ?>
 <html lang="en">
 
+This is sample of landing page.
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
