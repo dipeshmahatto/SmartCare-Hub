@@ -138,7 +138,7 @@ header {
   outline: none;
   border: none;
   font-size: 1rem;
-  color: var(--primary-color);
+  color: black;
   background-color: var(--primary-color-light);
   border-radius: 5px;
 }

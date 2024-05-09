@@ -46,7 +46,12 @@ $result = mysqli_query($conn, $sql);
           <input type="text" placeholder="Last Name" />
           <input type="text" placeholder="Address" />
           <input type="text" placeholder="Phone No." />
-          <button class="btn form__btn">Book Appointment</button>
+          <script>
+            function working(){
+              alert("working on it");
+            }
+          </script>
+          <button class="btn form__btn" onclick="working()">Book Appointment</button>
         </form>
       </div>
     </div>

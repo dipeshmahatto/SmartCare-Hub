@@ -15,7 +15,7 @@ body {
 .container {
     width: 100%;
     max-width: 650px;
-    background: rgb(43, 43, 56,1);
+    background: rgb(43, 43, 56, 1);
     padding: 28px;
     margin: 0 28px;
     border-radius: 10px;
@@ -60,6 +60,7 @@ h1 {
     border: 1px solid grey;
     padding: 0 10px;
 }
+
 .input select {
     height: 40px;
     width: 95%;
@@ -105,23 +106,26 @@ h1 {
     border: none;
     border-radius: 3px;
     color: rgb(0, 0, 0);
-    background: rgb(98, 219, 237);
+    background-color: #12ac8e;
 }
 
 .submit input:hover {
-    background: rgb(109, 152, 160);
+    background-color: #0e856d;
     color: rgb(255, 255, 255);
 }
-.already{
+
+.already {
     color: white;
     text-align: center;
     margin: 15px 0 0 0;
 
 }
+
 .already label a {
     text-decoration: none;
     color: #62ff00;
 }
+
 .already label a:hover {
     text-decoration: none;
     color: #ec1414;

@@ -8,6 +8,8 @@ if (!isset($_SESSION['Adminloggedin']) || $_SESSION['Adminloggedin'] !== true) {
 include "query/counts.php";
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,6 +47,7 @@ include "query/counts.php";
                     </h3>
                     <i class="fa-solid fa-user-doctor"></i>
                 </div>
+
                 <div class="list" id="pat">
                     <h3>
                         <?php echo $patients; ?>
