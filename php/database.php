@@ -3,7 +3,7 @@
 $host="localhost";
 $unamee="root";
 $passwordd="";
-$db_name="hms";
+$db_name="has";
 $conn=mysqli_connect($host,$unamee,$passwordd,$db_name);
 if(!$conn){
     echo "Connection Failed";
