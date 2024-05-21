@@ -7,7 +7,6 @@ if (!isset($_SESSION['Adminloggedin']) || $_SESSION['Adminloggedin'] !== true) {
 }
 include "query/counts.php";
 ?>
-git push
 
 
 <!DOCTYPE html>
@@ -34,12 +33,13 @@ git push
                 <a href="#" class="dashboard"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
                 <a href="doctor_list.php "><i class="fa-solid fa-user-doctor"></i>Doctor</a>
                 <a href="patient_list.php"><i class="fa-solid fa-bed-pulse"></i>Patient</a>
-                <a href="approval.php"><i class="fa-solid fa-person-circle-check"></i> Approval (<?php echo $approvals; ?>)
+                <a href="approval.php"><i class="fa-solid fa-person-circle-check"></i> Approval
+                    (<?php echo $approvals; ?>)
                 </a>
             </div>
         </div>
         <div class="content">
-            <?php include("top.php") ?>
+            <?php include ("top.php") ?>
             <div class="middle">
                 <div class="list" id="doc">
                     <h3>

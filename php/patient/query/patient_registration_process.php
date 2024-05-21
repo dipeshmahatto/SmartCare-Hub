@@ -17,6 +17,7 @@ if (
     $confirmPassword = $_POST['confirmPassword'];
     $gender = $_POST['gender'];
 }
+
 // phone number pattern 
 $pattern = '/^(98|97|96)\d{8}$/';
 $emailpattern = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';

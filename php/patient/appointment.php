@@ -4,8 +4,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: patient_login.php");
     exit;
 }
-include("query/session_values.php");
+include ("query/session_values.php");
 include "../database.php";
+include "query/date.php";
 ?>
 <html lang="en">
 
@@ -36,7 +37,7 @@ include "../database.php";
             </div>
         </div>
         <div class="content">
-            <?php include("top.php") ?>
+            <?php include ("top.php") ?>
             <div class="form">
                 <form action="query/appointment_process.php" method="post">
                     <div class="appointment">
@@ -60,12 +61,12 @@ include "../database.php";
                             <label for="day">Select day :</label>
                             <select id="day" name="day">
                                 <option value='' disabled selected>Select a day</option>
-                                <option value='SUNDAY'>SUNDAY</option>
-                                <option value='MONDAY'>MONDAY</option>
-                                <option value='TUESDAY'>TUESDAY</option>
-                                <option value='WEDNESDAY'>WEDNESDAY</option>
-                                <option value='THURSDAY'>THURSDAY</option>
-                                <option value='FRIDAY'>FRIDAY</option>
+                                <?php foreach ($days as $day): ?>
+                                    <option value='<?php echo $day; ?>'>
+                                        <?php echo strtoupper($day); ?>     <?php if ($day == $currentDay)
+                                                    echo '(Today)'; ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="input">

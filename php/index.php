@@ -20,13 +20,12 @@ $result = mysqli_query($conn, $sql);
     <nav class="section__container nav__container">
       <div class="nav__logo">SmartCare<span>Hub</span></div>
       <ul class="nav__links">
-        <li class="link"><a href="#">Home</a></li>
+        <li class="link"><a href="index.php">Home</a></li>
+        <li class="link"><a href="patient/patient_login.php">Patient Login</a></li>
+        <li class="link"><a href="doctor/doctor_login.php">Doctor Login</a></li>
+        <li class="link"><a href="admin/admin_login.php">Admin Login</a></li>
         <li class="link"><a href="#aboutus">About Us</a></li>
-        <!-- <li class="link"><a href="#">Services</a></li> -->
-        <li class="link"><a href="#">Pages</a></li>
-        <li class="link"><a href="#">Blog</a></li>
       </ul>
-      <button class="btn">Contact Us</button>
     </nav>
     <div class="section__container header__container">
       <div class="header__content">
@@ -37,7 +36,7 @@ $result = mysqli_query($conn, $sql);
           patient-centered approach, we're dedicated to your well-being. Trust
           us with your health and experience the difference.
         </p>
-        <button class="btn">See Services</button>
+        <button class="btn" >More details</button>
       </div>
       <div class="header__form">
         <form>

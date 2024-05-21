@@ -15,6 +15,7 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css//admin_dashboard.css">
+    <script src="../../js/validates.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Admin Dashboard</title>
 </head>
@@ -83,7 +84,7 @@ $result = mysqli_query($conn, $sql);
                                 <form action="query/delete.php" method="post">
                                     <input type="hidden" name="id" value="<?= $row["id"] ?>">
                                     <input type="hidden" name="fullName" value="<?= $row["fullName"]?>">
-                                    <button type="submit" name="delete" class="delete">Remove</button>
+                                    <button type="submit" name="delete" class="delete" onclick="Remove()">Remove</button>
                                 </form>
                             </td>
                         </tr>

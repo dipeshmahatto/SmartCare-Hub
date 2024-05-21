@@ -43,7 +43,6 @@ $result = mysqli_query($conn, $app);
                         <th>Appointment Id</th>
                         <th>Patient Name</th>
                         <th>Category</th>
-                        <th>Doctor Name</th>
                         <th>Appointment time</th>
                         <th>Day</th>
                         <th>Status</th>
@@ -70,9 +69,6 @@ $result = mysqli_query($conn, $app);
                             </td>
                             <td>
                                 <?php echo $row['category']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row["doctor"]; ?>
                             </td>
                             <td>
                                 <?php echo $row["app_time"] ?>
