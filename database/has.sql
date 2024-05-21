@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2024 at 04:11 AM
+-- Generation Time: May 21, 2024 at 03:06 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hms`
+-- Database: `has`
 --
 
 -- --------------------------------------------------------
@@ -62,9 +62,8 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`aid`, `pid`, `category`, `doctor`, `app_time`, `day`, `status`) VALUES
-(12, 4, 'Surgery', 'susmita', '11 AM', 'SUNDAY', 1),
-(13, 1, 'Ophthalmology', 'Dr.Suraj', '12 PM', 'FRIDAY', 0),
-(14, 1, 'Radiology', 'Dr.Suray', '1 PM', 'WEDNESDAY', 0);
+(22, 1, 'Radiology', 'Dr.Aaryan', '10 AM', 'TUESDAY', 1),
+(23, 1, 'Radiology', 'Dr.Aaryan', '12 PM', 'TUESDAY', 0);
 
 -- --------------------------------------------------------
 
@@ -92,11 +91,7 @@ CREATE TABLE `doctor` (
 
 INSERT INTO `doctor` (`id`, `fullName`, `email`, `phoneNumber`, `age`, `birthYear`, `address`, `speciality`, `qualification`, `password`, `gender`) VALUES
 (15, 'Dr.Aaryan', 'aaryan@gmail.com', '9819800000', 31, 1993, 'bafal', 'Radiology', 'PHD', '12345678', 'M'),
-(16, 'Dr.Suraj', 'suraj@gmail.com', '9745837908', 35, 1993, 'kathmandu', 'Ophthalmology', 'MBBS', '12345678', 'M'),
-(17, 'susmita', 'susmita@gmail.com', '9841123044', 29, 1993, 'kritipur', 'Surgery', 'MD', '123456789', 'F'),
-(18, 'Dr.Suray', 'surya@gmail.com', '9812545112', 36, 1991, 'bagmati', 'Radiology', 'PHD', '12345678', 'M'),
-(19, 'Dr.Dipesh', 'dipesh@gmail.com', '9803643491', 29, 1991, 'kathmandu', 'Ophthalmology', 'MBBS', '123456789', 'M'),
-(20, 'Dr.Ashok', 'ashok@gmail.com', '9808188011', 35, 1985, 'janakpur', 'Dental', 'MD', '12345678', 'M');
+(19, 'Dr.Dipesh', 'dipesh@gmail.com', '9803643491', 29, 1991, 'kathmandu', 'Ophthalmology', 'MBBS', 'susmita@dipesh', 'M');
 
 -- --------------------------------------------------------
 
@@ -149,7 +144,6 @@ CREATE TABLE `patient` (
 
 INSERT INTO `patient` (`id`, `fullName`, `email`, `phoneNumber`, `age`, `birthYear`, `address`, `password`, `gender`) VALUES
 (1, 'Dipesh patient', 'patient@gmail.com', '9745837908', 22, 2003, 'kathmandu', 'patient', 'm'),
-(2, 'sachin', 'sachin@gmail.com', '9845837908', 24, 2001, 'gaushala-11', '12345678', 'm'),
 (4, 'surya mahato', 'suryanarayan2056@gmail.com', '9819800670', 25, 1999, 'kalimati', '12345678', 'm');
 
 -- --------------------------------------------------------
@@ -228,7 +222,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `doctor_approval`
