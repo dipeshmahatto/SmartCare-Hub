@@ -16,7 +16,7 @@ if (mysqli_num_rows($result) == 1) {
     $_SESSION['doctorloggedin'] = true;
     header('Location:../doctor_dashboard.php');
 } else {
-    header("Location: doctor_login.php?error=Phone Number and Password Does Not Match");
+    header("Location: ../doctor_login.php?error=Phone Number and Password Does Not Match");
     exit();
 }
 ?>
