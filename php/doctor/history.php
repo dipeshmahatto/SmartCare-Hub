@@ -1,6 +1,7 @@
 <?php session_start();
 include("query/session.php");
 include("../database.php");
+include("query/image.php");
 // Checking if the user is logged in
 if (!isset($_SESSION['doctorloggedin']) || $_SESSION['doctorloggedin'] !== true) {
     header("Location: doctor_login.php");
@@ -24,7 +25,7 @@ $result = mysqli_query($conn, $app);
     <div class="container">
         <div class="nav">
             <div class="profile">
-                <img src="../../img/admin_profile.jpg" alt="">
+            <img src="<?= $imagePath ?>" alt="Profile Image not found">
                 <br>
                 <h3><?php echo $DoctorfullName ?></h3>
             </div>

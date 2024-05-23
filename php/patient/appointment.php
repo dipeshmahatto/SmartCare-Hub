@@ -7,6 +7,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 include ("query/session_values.php");
 include "../database.php";
 include "query/date.php";
+include("query/image.php");
 ?>
 <html lang="en">
 
@@ -23,7 +24,7 @@ include "query/date.php";
     <div class="container">
         <div class="nav">
             <div class="profile">
-                <img src="../../img/admin_profile.jpg" alt="">
+            <img src="<?= $imagePath ?>" alt="Profile Image not found">
                 <br>
                 <h3>
                     <?php echo $fullName; ?>

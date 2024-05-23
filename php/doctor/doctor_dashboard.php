@@ -6,6 +6,10 @@ if (!isset($_SESSION['doctorloggedin']) || $_SESSION['doctorloggedin'] !== true)
     header("Location: doctor_login.php");
     exit;
 }
+
+
+include("query/image.php");
+
 $app = "SELECT * FROM appointment WHERE doctor='$DoctorfullName' AND status=0";
 $result = mysqli_query($conn, $app);
 ?>
@@ -23,12 +27,18 @@ $result = mysqli_query($conn, $app);
 <body>
     <div class="container">
         <div class="nav">
-            <div class="profile">
-                <img src="../../img/admin_profile.jpg" alt="">
+        <div class="profile">
+                <!-- Profile img are shown using database -->
+                <img src="<?= $imagePath ?>" alt="Profile Image not found">
                 <br>
-                <h3>
-                    <?php echo $DoctorfullName ?>
-                </h3>
+                <h3><?= $DoctorfullName; ?></h3>
+                <div class="upload-container">
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" id="file" accept="image/*" required>
+                        <br>
+                        <input type="submit" value="Upload Image">
+                    </form>
+                </div>
             </div>
             <hr>
             <div class="operation">

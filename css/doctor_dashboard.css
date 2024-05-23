@@ -127,3 +127,29 @@ table button {
     background-color: rgb(16, 237, 16);
     color: black;
 }
+
+/* profile image */
+.upload-container {
+    margin-top: 10px;
+}
+.upload-container input[type="file"] {
+    margin-bottom: 10px;
+}
+.upload-container input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.upload-container input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}

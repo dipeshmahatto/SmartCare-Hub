@@ -1,14 +1,13 @@
 <?php
 session_start();
-include("query/session_values.php");
-include("../database.php");
+include ("query/session_values.php");
+include ("../database.php");
+include("query/image.php");
 // Check if the user is logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: patient_login.php");
     exit;
 }
-
-
 
 // active appointments
 $app = "SELECT * FROM appointment WHERE pid='$id' AND status=0";
@@ -28,13 +27,18 @@ $result = mysqli_query($conn, $app);
 <body>
     <div class="container">
         <div class="nav">
-            <div class="profile">
-                <!-- Profile img are shown using database  -->
-                <img src="../../img/admin_profile.jpg" alt="">
+        <div class="profile">
+                <!-- Profile img are shown using database -->
+                <img src="<?= $imagePath ?>" alt="Profile Image not found">
                 <br>
-                <h3>
-                    <?php echo $fullName; ?>
-                </h3>
+                <h3><?= $fullName; ?></h3>
+                <div class="upload-container">
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" id="file" accept="image/*" required>
+                        <br>
+                        <input type="submit" value="Upload Image">
+                    </form>
+                </div>
             </div>
             <hr>
             <div class="operation">
@@ -44,7 +48,7 @@ $result = mysqli_query($conn, $app);
             </div>
         </div>
         <div class="content">
-            <?php include("top.php") ?>
+            <?php include ("top.php") ?>
 
             <div class="table">
                 <table>

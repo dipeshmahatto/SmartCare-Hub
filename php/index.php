@@ -82,31 +82,6 @@ $result = mysqli_query($conn, $sql);
       <img src="../img/about.jpg" alt="about" />
     </div>
   </section>
-  <section class="section__container doctors__container">
-    <div class="doctors__header">
-      <div class="doctors__header__content">
-        <h2 class="section__header">Our Doctors</h2>
-        <p>
-          We take pride in our exceptional team of doctors, each a specialist
-          in their respective fields.
-        </p>
-      </div>
-
-    </div>
-
-    <div class="doctors__grid">
-      <?php while ($row = $result->fetch_assoc()): ?>
-        <div class="doctors__card">
-          <div class="doctors__card__image">
-            <img src="../img/admin_profile.jpg" alt="Image Not Found">
-          </div>
-          <h4><?php echo $row['fullName']; ?></h4>
-          <p><?php echo $row['speciality']; ?></p>
-        </div>
-      <?php endwhile; ?>
-    </div>
-  </section>
-
   <footer class="footer">
     <?php
     include ("footer.php");
