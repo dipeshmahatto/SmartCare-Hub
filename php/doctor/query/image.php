@@ -5,13 +5,13 @@ include("../database.php");
 $userId = $_SESSION['id'];
 // Define the upload directory and user full name
 $uploadDir = 'uploads/';
-$userFullName = str_replace(' ', '_', $_SESSION['DoctorfullName']); // Replace spaces with underscores
+$userid = str_replace(' ', '_', $_SESSION['id']); // Replace spaces with underscores
 
 // Check for existing profile image
 $imagePath = '';
 $extensions = ['jpg', 'jpeg'];
 foreach ($extensions as $ext) {
-    $filePath = $uploadDir . $userFullName . '.' . $ext;
+    $filePath = $uploadDir . $userid . '.' . $ext;
     if (file_exists($filePath)) {
         $imagePath = $filePath;
         break;

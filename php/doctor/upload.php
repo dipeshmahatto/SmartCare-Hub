@@ -3,12 +3,12 @@ session_start();
 include("../database.php");
 
 // Simulate logged-in user full name
-$userFullName = str_replace(' ', '_', $_SESSION['DoctorfullName']); // Replace spaces with underscores
+$userid = str_replace(' ', '_', $_SESSION['id']); // Replace spaces with underscores
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
     $uploadDir = 'uploads/';
     $fileExtension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-    $newFileName = $userFullName . '.' . $fileExtension;
+    $newFileName = $userid . '.' . $fileExtension;
     $uploadFile = $uploadDir . basename($newFileName);
 
     // Ensure the uploads directory exists
