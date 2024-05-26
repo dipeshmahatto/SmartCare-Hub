@@ -19,7 +19,7 @@ if (mysqli_num_rows($result) == 1) {
     $_SESSION['loggedin'] = true;
     header('Location:../patient_dashboard.php');
 } else {
-    header("Location: ../patient_login.php?error=Phone Number and Password Does Not Match");
+    header("Location: ../patient_login.php?error=" . urlencode("Invalid credentials"));
     exit();
 }
 ?>

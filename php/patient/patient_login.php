@@ -6,6 +6,7 @@
   <title>Patient Login</title>
   <link rel="stylesheet" href="../../css/login.css" />
   <script src="../../js/user_login_validate.js"></script>
+  <script src="../../js/error.js"></script>
 </head>
 
 <body>
@@ -21,10 +22,12 @@
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="Enter Password" />
         </div>
+        <span id="error-message" style="color: red;"></span>
       </div>
       <div class="forgot">
         <a href="forgot.php">Forgot Password ?</a>
       </div>
+      
       <div class="submit">
         <input type="submit" value="Login">
       </div>

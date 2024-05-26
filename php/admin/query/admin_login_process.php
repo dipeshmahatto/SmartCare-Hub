@@ -16,7 +16,7 @@ if (mysqli_num_rows($result) == 1) {
     $_SESSION['Adminloggedin'] = true;
     header('Location:../admin_dashboard.php');
 } else {
-    header("Location: ../admin_login.php?error=Username and Password Does Not Match");
+    header("Location: ../admin_login.php?error=" . urlencode("Invalid credentials"));
     exit();
 }
 ?>

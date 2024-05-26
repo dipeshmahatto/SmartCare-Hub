@@ -6,6 +6,7 @@
   <title>Admin Login</title>
   <link rel="stylesheet" href="../../css/login.css"/>
   <script src="../../js/admin_login_validate.js"></script>
+  <script src="../../js/error.js"></script>
 </head>
 <body>
   <div class="container">
@@ -20,6 +21,7 @@
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="Enter Password" />
         </div>
+        <span id="error-message" style="color: red;"></span>
       </div>
       <div class="submit">
         <input type="submit" value="Login">

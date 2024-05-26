@@ -6,6 +6,7 @@
   <title>Doctor Login</title>
   <link rel="stylesheet" href="../../css/login.css" />
   <script src="../../js/user_login_validate.js"></script>
+  <script src="../../js/error.js"></script>
 </head>
 
 <body>
@@ -15,12 +16,13 @@
       <div class="login_box">
         <div class="input">
           <label for="phoneNumber">Phone Number</label>
-          <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" />
+          <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" />
         </div>
         <div class="input">
           <label for="password">Password</label>
           <input type="password" id="password" name="password" placeholder="Enter Password" />
         </div>
+        <span id="error-message" style="color: red;"></span>
       </div>
       <div class="forgot">
         <a href="forgot.php">Forgot Password ?</a>

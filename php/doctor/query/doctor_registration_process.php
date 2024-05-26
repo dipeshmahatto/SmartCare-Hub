@@ -1,13 +1,13 @@
 <?php
 session_start();
 include "../../database.php";
+
 if (
     isset($_POST['fullName']) && isset($_POST['email']) && isset($_POST['phoneNumber']) && isset($_POST['age'])
     && isset($_POST['birthYear']) && isset($_POST['address']) && isset($_POST['speciality'])
     && isset($_POST['qualification']) && isset($_POST['password']) && isset($_POST['confirmPassword'])
     && isset($_POST['gender'])
 ) {
-
     $fullName = $_POST['fullName'];
     $email = $_POST['email'];
     $phoneNumber = $_POST['phoneNumber'];
@@ -19,77 +19,75 @@ if (
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
     $gender = $_POST['gender'];
-}
-// phone number pattern 
-$pattern = '/^(98|97|96)\d{8}$/';
-// email pattern 
-$emailpattern = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
 
-if (empty($fullName)) {
-    header("Location: ../doctor_registration.php?error=UserName is Required");
-    exit();
-}
+    // Phone number pattern
+    $pattern = '/^(98|97|96)\d{8}$/';
+    // Email pattern
+    $emailPattern = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
+    // Name pattern (letters and spaces only)
+    $namePattern = '/^[a-zA-Z\s]+$/';
 
-//phone number validation
-if (empty($phoneNumber)) {
-    header("Location: ../doctor_registration.php?error=Phone Number is Required");
-    exit();
-} elseif (strlen($phoneNumber) == 10 || preg_match($pattern, $phoneNumber)) {
-    $phoneNumberCheckQuery = "SELECT phoneNumber FROM doctor WHERE phoneNumber='$phoneNumber'";
-    $phoneNumberCheckResult = mysqli_query($conn, $phoneNumberCheckQuery);
+    // Validate Full Name
+    if (empty($fullName) || !preg_match($namePattern, $fullName)) {
+        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Full Name"));
+        exit();
+    }
 
-    if (mysqli_num_rows($phoneNumberCheckResult) > 0) {
-        echo "<script>alert('This Phone Number is Already in use');</script>";
-        echo "<script>window.location.href = '../doctor_registration.php';</script>";
+    // Validate Email
+    if (empty($email) || !preg_match($emailPattern, $email)) {
+        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Email"));
+        exit();
+    }
+
+    // Validate Phone Number
+    if (empty($phoneNumber) || !preg_match($pattern, $phoneNumber)) {
+        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Phone Number"));
+        exit();
+    }
+
+    // Validate Age
+    if (empty($age) || $age < 25 || $age > 100) {
+        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Age"));
+        exit();
+    }
+
+    // Validate Birth Year
+    if (empty($birthYear) || $birthYear < 1925 || $birthYear > 2000) {
+        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Birth Year"));
+        exit();
+    }
+
+    // Validate Address
+    if (empty($address)) {
+        header("Location: ../doctor_registration.php?error=" . urlencode("Address is Required"));
+        exit();
+    }
+
+    // Validate Gender
+    if (empty($gender)) {
+        header("Location: ../doctor_registration.php?error=" . urlencode("Gender is Required"));
+        exit();
+    }
+
+    // Validate Password
+    if (empty($password) || strlen($password) < 8 || $password != $confirmPassword) {
+        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Password"));
+        exit();
+    }
+
+    // Insert Data into Database
+    $sql = "INSERT INTO doctor_approval(fullName,email,phoneNumber,age,birthYear,address,speciality,qualification,password,gender) 
+            VALUES ('$fullName','$email','$phoneNumber','$age','$birthYear','$address','$speciality','$qualification','$password','$gender')";
+
+    if (mysqli_query($conn, $sql)) {
+        header("Location:../../index.php");
+        exit();
+    } else {
+        header("Location: ../doctor_registration.php?error=" . urlencode("Error: " . mysqli_error($conn)));
         exit();
     }
 } else {
-    header("Location: ../doctor_registration.php?error=Phone Number is Invalid");
+    header("Location: ../doctor_registration.php?error=" . urlencode("All fields are required"));
     exit();
 }
-
-// age validation
-if (empty($age)) {
-    header("Location: ../doctor_registration.php?error=Age is Required");
-    exit();
-} elseif ($age < 25 && $age > 100) {
-    header("Location: ../doctor_registration.php?error=Age must be greater than 0 and less than 100");
-    exit();
-}
-
-// Birth year validation
-if (empty($birthYear)) {
-    header("Location: ../doctor_registration.php?error=BirthYear is Required");
-    exit();
-} elseif ($birthYear < 1925 && $birthYear > 2000) {
-    header("Location: ../doctor_registration.php?error=BirthYear is Invalid");
-    exit();
-}
-
-if (empty($address)) {
-    header("Location: ../doctor_registration.php?error=Address is Required");
-    exit();
-}
-if (empty($gender)) {
-    header("Location: ../doctor_registration.php?error=Gender is Required");
-    exit();
-}
-
-if (empty($password)) {
-    header("Location: ../doctor_registration.php?error=Password is Required");
-    exit();
-} else if (empty($confirmPassword)) {
-    header("Location: ../doctor_registration.php?error=Password Confirmation is Required");
-    exit();
-} else if (strlen($password) < 8) {
-    header("Location:../doctor_registration.php?error=Password must be at least 8 character");
-    exit();
-} else if ($password != $confirmPassword) {
-    header("Location: ../doctor_registration.php?error=Password and Password Confirmation Does Not Match");
-    exit();
-}
-$sql = "INSERT INTO doctor_approval(fullName,email,phoneNumber,age,birthYear,address,speciality,qualification,
-password,gender)values('$fullName','$email','$phoneNumber','$age','$birthYear','$address','$speciality','$qualification','$password','$gender')";
-if (mysqli_query($conn, $sql)) {
-    header("Location:../../index.php");
-}
+?>
