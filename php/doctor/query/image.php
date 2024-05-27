@@ -2,10 +2,10 @@
 include("query/session.php");
 include("../database.php");
 // Get user ID (assuming it's stored in session or session_values.php)
-$userId = $_SESSION['id'];
+$userId = $_SESSION['did'];
 // Define the upload directory and user full name
 $uploadDir = 'uploads/';
-$userid = str_replace(' ', '_', $_SESSION['id']); // Replace spaces with underscores
+$userid = str_replace(' ', '_', $_SESSION['did']); // Replace spaces with underscores
 
 // Check for existing profile image
 $imagePath = '';

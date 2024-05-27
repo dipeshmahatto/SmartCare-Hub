@@ -11,7 +11,7 @@ $result = mysqli_query($conn, $sql);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="front.css" />
+  <link rel="stylesheet" href="../css/front.css" />
   <title>SmartCare Hub</title>
 </head>
 
@@ -38,19 +38,14 @@ $result = mysqli_query($conn, $sql);
         </p>
         <button class="btn" >More details</button>
       </div>
-      <div class="header__form">
-        <form>
+      <div class="header__form" >
+        <form action="patient/patient_login.php">
           <h4>Book Now</h4>
           <input type="text" placeholder="First Name" />
           <input type="text" placeholder="Last Name" />
           <input type="text" placeholder="Address" />
           <input type="text" placeholder="Phone No." />
-          <script>
-            function working(){
-              alert("working on it");
-            }
-          </script>
-          <button class="btn form__btn" onclick="working()">Book Appointment</button>
+          <button type="submit" class="btn form__btn"">Book Appointment</button>
         </form>
       </div>
     </div>

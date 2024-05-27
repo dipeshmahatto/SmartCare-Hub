@@ -10,7 +10,7 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
-    $_SESSION['id'] = $row['id'];
+    $_SESSION['did'] = $row['id'];
     $_SESSION['DoctorfullName'] = $row['fullName'];
     $_SESSION['phoneNumber'] = $row['phoneNumber'];
     $_SESSION['doctorloggedin'] = true;

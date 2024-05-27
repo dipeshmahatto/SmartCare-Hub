@@ -1,7 +1,7 @@
 <?php
 // Access session data from patient login process 1
 if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
+    $id = $_SESSION['did'];
 }
 if (isset($_SESSION['DoctorfullName'])) {
     $DoctorfullName = $_SESSION['DoctorfullName'];

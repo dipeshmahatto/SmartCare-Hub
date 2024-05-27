@@ -226,7 +226,7 @@ header {
 }
 
 .footer {
-  background-color: var(--primary-color-light);
+  /* background-color: var(--primary-color-light); */
 }
 
 @media (width < 900px) {
