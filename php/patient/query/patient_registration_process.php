@@ -67,7 +67,7 @@ if (
     if (empty($age)) {
         header("Location: ../patient_registration.php?error=" . urlencode("Age is Required"));
         exit();
-    } elseif ($age <= 0 || $age >= 100) {
+    } elseif ($age < 0 || $age >= 100) {
         header("Location: ../patient_registration.php?error=" . urlencode("Age must be between 1 and 99"));
         exit();
     }
@@ -110,7 +110,7 @@ if (
     $sql = "INSERT INTO patient(fullName,email,phoneNumber,age,birthYear,address,password,gender) VALUES ('$fullName','$email','$phoneNumber','$age','$birthYear','$address','$password','$gender')";
 
     if (mysqli_query($conn, $sql)) {
-        header("Location:../../index.php");
+        header("Location:../patient_login.php");
         exit();
     } else {
         header("Location: ../patient_registration.php?error=" . urlencode("Error: " . mysqli_error($conn)));
