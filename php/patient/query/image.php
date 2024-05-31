@@ -1,12 +1,10 @@
 
 <?php 
 // Get user ID (assuming it's stored in session or session_values.php)
-$userId = $_SESSION['id'];
+$userid = $_SESSION['id'];
 
-// Define the upload directory and user full name
+// Define the upload directory and userid
 $uploadDir = 'uploads/';
-$userid = str_replace(' ', '_', $_SESSION['id']); // Replace spaces with underscores
-
 // Check for existing profile image
 $imagePath = '';
 $extensions = ['jpg', 'jpeg'];

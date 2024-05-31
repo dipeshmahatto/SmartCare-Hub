@@ -1,11 +1,9 @@
-<?php 
-include("query/session.php");
-include("../database.php");
-// Get user ID (assuming it's stored in session or session_values.php)
-$userId = $_SESSION['did'];
-// Define the upload directory and user full name
+<?php
+include ("query/session.php");
+include ("../database.php");
+$userid = $_SESSION['did'];
+// Define the upload directory and userid
 $uploadDir = 'uploads/';
-$userid = str_replace(' ', '_', $_SESSION['did']); // Replace spaces with underscores
 
 // Check for existing profile image
 $imagePath = '';
@@ -14,6 +12,9 @@ foreach ($extensions as $ext) {
     $filePath = $uploadDir . $userid . '.' . $ext;
     if (file_exists($filePath)) {
         $imagePath = $filePath;
+        echo "<style>
+        #uploadimg{display:none;}
+        </style>";
         break;
     }
 }

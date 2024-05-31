@@ -22,6 +22,13 @@ $result = mysqli_query($conn, $app);
     <link rel="stylesheet" href="../../css/doctor_dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Doctor Dashboard</title>
+    <style>
+        <?php if ($imagePath) : ?>
+        #upload-container {
+            display: none;
+        }
+        <?php endif; ?>
+    </style>
 </head>
 
 <body>
@@ -32,9 +39,9 @@ $result = mysqli_query($conn, $app);
                 <img src="<?= $imagePath ?>" alt="Profile Image not found">
                 <br>
                 <h3><?= $DoctorfullName; ?></h3>
-                <div class="upload-container">
+                <div class="upload-container" id="upload-container">
                     <form action="upload.php" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" id="file" accept="image/*" required>
+                        <input type="file" name="file" id="file" accept="image/*">
                         <br>
                         <input type="submit" value="Upload Image">
                     </form>
