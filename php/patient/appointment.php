@@ -50,6 +50,7 @@ include("query/image.php");
                                 <option value="Dental">Dental</option>
                                 <option value="Ophthalmology">Ophthalmology</option>
                                 <option value="Radiology">Radiology</option>
+                                <option value="Gynoclogist">Gynoclogist</option>
 
                             </select>
                         </div>
