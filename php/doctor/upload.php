@@ -1,34 +1,40 @@
 <?php
-session_start();
-include("../database.php");
-
-// Simulate logged-in user full name
-$userid = str_replace(' ', '_', $_SESSION['did']); // Replace spaces with underscores
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['file']) && $_FILES['file']['error'] == UPLOAD_ERR_OK) {
-    $uploadDir = 'uploads/';
-    $fileExtension = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
-    $newFileName = $userid . '.' . $fileExtension;
-    $uploadFile = $uploadDir . basename($newFileName);
-
-    // Ensure the uploads directory exists
-    if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
-    }
-
-    // Move uploaded file to target directory
-    if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
-        header("Location: doctor_dashboard.php");
-    } else {
-        echo "<div style='text-align: center; margin-top: 50px;'>";
-        echo "<h2>Possible file upload attack!</h2>";
-        echo "<a href='doctor_dashboard.php'>Try again</a>";
-        echo "</div>";
-    }
-} else {
-    echo "<div style='text-align: center; margin-top: 50px;'>";
-    echo "<h2>No file uploaded or there was an upload error.</h2>";
-    echo "<a href='doctor_dashboard.php'>Try again</a>";
-    echo "</div>";
+require_once '../security.php';
+secure_session_start();
+if (!isset($_SESSION['doctorloggedin']) || $_SESSION['doctorloggedin'] !== true) {
+    header('Location: doctor_login.php');
+    exit;
 }
-?>
+require_post_request('doctor_dashboard.php');
+require_valid_csrf('doctor_dashboard.php');
+
+$userId = (int) ($_SESSION['did'] ?? 0);
+$file = $_FILES['file'] ?? null;
+$maxBytes = 2 * 1024 * 1024;
+$allowedMimes = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp'];
+
+if ($userId <= 0 || !$file || $file['error'] !== UPLOAD_ERR_OK || $file['size'] <= 0 || $file['size'] > $maxBytes) {
+    header('Location: doctor_dashboard.php?error=' . urlencode('Choose a JPG, PNG or WebP image up to 2 MB.'));
+    exit;
+}
+
+$finfo = new finfo(FILEINFO_MIME_TYPE);
+$mime = $finfo->file($file['tmp_name']);
+if (!isset($allowedMimes[$mime])) {
+    header('Location: doctor_dashboard.php?error=' . urlencode('Unsupported profile image type.'));
+    exit;
+}
+
+$uploadDir = __DIR__ . '/uploads';
+if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
+foreach (['jpg', 'jpeg', 'png', 'webp'] as $oldExt) {
+    $old = $uploadDir . '/' . $userId . '.' . $oldExt;
+    if (is_file($old)) @unlink($old);
+}
+$destination = $uploadDir . '/' . $userId . '.' . $allowedMimes[$mime];
+if (!move_uploaded_file($file['tmp_name'], $destination)) {
+    header('Location: doctor_dashboard.php?error=' . urlencode('Profile photo could not be saved.'));
+    exit;
+}
+header('Location: doctor_dashboard.php?photo=updated');
+exit;

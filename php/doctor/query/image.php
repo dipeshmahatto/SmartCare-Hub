@@ -1,20 +1,16 @@
 <?php
-include ("query/session.php");
-include ("../database.php");
-$userid = $_SESSION['did'];
-// Define the upload directory and userid
-$uploadDir = 'uploads/';
+include_once('query/session.php');
+include_once('../database.php');
 
-// Check for existing profile image
+$userid = isset($_SESSION['did']) ? (int) $_SESSION['did'] : 0;
+$uploadDir = 'uploads/';
 $imagePath = '';
-$extensions = ['jpg', 'jpeg'];
-foreach ($extensions as $ext) {
+
+foreach (['jpg', 'jpeg', 'png', 'webp'] as $ext) {
     $filePath = $uploadDir . $userid . '.' . $ext;
     if (file_exists($filePath)) {
         $imagePath = $filePath;
-        echo "<style>
-        #uploadimg{display:none;}
-        </style>";
         break;
     }
 }
+?>

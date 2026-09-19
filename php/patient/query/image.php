@@ -7,7 +7,7 @@ $userid = $_SESSION['id'];
 $uploadDir = 'uploads/';
 // Check for existing profile image
 $imagePath = '';
-$extensions = ['jpg', 'jpeg'];
+$extensions = ['jpg', 'jpeg', 'png'];
 foreach ($extensions as $ext) {
     $filePath = $uploadDir . $userid . '.' . $ext;
     if (file_exists($filePath)) {

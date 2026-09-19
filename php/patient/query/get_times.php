@@ -1,31 +1,32 @@
 <?php
-include "../../database.php";
+include '../../database.php';
 
-if (isset($_POST['doctor']) && isset($_POST['day'])) {
-    $selectedDay = $_POST['day'];
-    $selectedDoctor = $_POST['doctor'];
-    $sql = "SELECT app_time FROM appointment WHERE day = '$selectedDay' AND doctor = '$selectedDoctor' AND status=0";
-    $timesql = "SELECT times FROM times";
-    $result = $conn->query($sql);
-    $result2 = $conn->query($timesql);
+$selectedDoctor = trim($_POST['doctor'] ?? '');
+$selectedDay = strtoupper(trim($_POST['day'] ?? ''));
 
-    // Fetch all booked appointment times
-    $bookedTimes = [];
+if ($selectedDoctor === '' || $selectedDay === '') {
+    echo "<option value=''>Select a doctor and day first</option>";
+    exit;
+}
+
+$bookedTimes = [];
+$stmt = $conn->prepare("SELECT app_time FROM appointment WHERE day = ? AND doctor = ? AND status IN ('pending','confirmed')");
+if ($stmt) {
+    $stmt->bind_param('ss', $selectedDay, $selectedDoctor);
+    $stmt->execute();
+    $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
         $bookedTimes[] = $row['app_time'];
     }
+    $stmt->close();
+}
 
-    // Output options for available times
-    if ($result2->num_rows > 0) {
-        while ($row = $result2->fetch_assoc()) {
-            // Check if the time is not already booked
-            if (!in_array($row['times'], $bookedTimes)) {
-                echo "<option value='" . $row['times'] . "'>" . $row['times'] . "</option>";
-            }
+$result = $conn->query('SELECT times FROM times ORDER BY tid ASC');
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        if (!in_array($row['times'], $bookedTimes, true)) {
+            $safe = htmlspecialchars($row['times'], ENT_QUOTES, 'UTF-8');
+            echo "<option value='{$safe}'>{$safe}</option>";
         }
     }
-
-} else {
-    echo "<option value=''>Select a day first</option>";
 }
-?>

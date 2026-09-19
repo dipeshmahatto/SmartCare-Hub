@@ -1,26 +1,25 @@
 <?php
+require_once '../../security.php';
+secure_session_start();
+require_post_request('../forgot.php');
+require_valid_csrf('../forgot.php');
+include '../../database.php';
 
-include "../../database.php";
-session_start();
+$phoneNumber = clean_string($_POST['phoneNumber'] ?? '');
+$birthYear = (int) ($_POST['birthYear'] ?? 0);
+$stmt = $conn->prepare('SELECT id, password FROM doctor WHERE phoneNumber = ? AND birthYear = ? LIMIT 1');
+$stmt->bind_param('si', $phoneNumber, $birthYear);
+$stmt->execute();
+$row = $stmt->get_result()->fetch_assoc();
+$stmt->close();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $phoneNumber = $_POST["phoneNumber"];
-    $birthYear = $_POST["birthYear"];
+if ($row) {
+    $_SESSION['password_reset_user_id'] = (int) $row['id'];
+    $_SESSION['password_reset_role'] = 'doctor';
+    $_SESSION['password_reset_old_hash'] = $row['password'];
+    $_SESSION['password_reset_expires'] = time() + 600;
+    header('Location: ../password_change.php');
+    exit;
 }
-
-$sql = "SELECT * FROM doctor WHERE phoneNumber='$phoneNumber' AND birthYear='$birthYear'";
-$result = mysqli_query($conn, $sql);
-
-if (mysqli_num_rows($result) == 1) {
-    $row = mysqli_fetch_assoc($result);
-    $_SESSION['oldpassword'] = $row['password'];
-    $_SESSION['forgotpasswordphonenumber'] = $phoneNumber;
-    header('Location:../password_change.php');
-} else {
-    echo '<script>
-            alert("Phone Number and BirthYear Does Not Match");
-            window.location.href = "../forgot.php";
-          </script>';
-    exit();
-}
-?>
+header('Location: ../forgot.php?error=' . urlencode('Phone number and birth year do not match.'));
+exit;

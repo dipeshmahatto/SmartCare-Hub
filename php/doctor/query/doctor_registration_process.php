@@ -1,93 +1,60 @@
 <?php
-session_start();
-include "../../database.php";
+require_once '../../security.php';
+secure_session_start();
+require_post_request('../doctor_registration.php');
+require_valid_csrf('../doctor_registration.php');
+include '../../database.php';
 
-if (
-    isset($_POST['fullName']) && isset($_POST['email']) && isset($_POST['phoneNumber']) && isset($_POST['age'])
-    && isset($_POST['birthYear']) && isset($_POST['address']) && isset($_POST['speciality'])
-    && isset($_POST['qualification']) && isset($_POST['password']) && isset($_POST['confirmPassword'])
-    && isset($_POST['gender'])
-) {
-    $fullName = $_POST['fullName'];
-    $email = $_POST['email'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $age = $_POST['age'];
-    $birthYear = $_POST['birthYear'];
-    $address = $_POST['address'];
-    $speciality = $_POST['speciality'];
-    $qualification = $_POST['qualification'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmPassword'];
-    $gender = $_POST['gender'];
+$fullName = clean_string($_POST['fullName'] ?? '');
+$email = clean_string($_POST['email'] ?? '');
+$phoneNumber = clean_string($_POST['phoneNumber'] ?? '');
+$age = (int) ($_POST['age'] ?? 0);
+$birthYear = (int) ($_POST['birthYear'] ?? 0);
+$address = clean_string($_POST['address'] ?? '');
+$speciality = clean_string($_POST['speciality'] ?? '');
+$qualification = clean_string($_POST['qualification'] ?? '');
+$password = (string) ($_POST['password'] ?? '');
+$confirmPassword = (string) ($_POST['confirmPassword'] ?? '');
+$gender = strtoupper(clean_string($_POST['gender'] ?? ''));
+$currentYear = (int) date('Y');
+$allowedSpecialities = ['Surgery', 'Dental', 'Ophthalmology', 'Radiology', 'Gynoclogist'];
+$allowedQualifications = ['MBBS', 'MD', 'PHD', 'BDS'];
 
-    // Phone number pattern
-    $pattern = '/^(98|97|96)\d{8}$/';
-    // Email pattern
-    $emailPattern = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/';
-    // Name pattern (letters and spaces only)
-    $namePattern = '/^[a-zA-Z\s]+$/';
+$redirectError = static function (string $message): never {
+    header('Location: ../doctor_registration.php?error=' . urlencode($message));
+    exit;
+};
 
-    // Validate Full Name
-    if (empty($fullName) || !preg_match($namePattern, $fullName)) {
-        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Full Name"));
-        exit();
-    }
+if ($fullName === '' || !preg_match("/^[\p{L} .'-]+$/u", $fullName)) $redirectError('Enter a valid full name.');
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $redirectError('Enter a valid email address.');
+if (!preg_match('/^(98|97|96)\d{8}$/', $phoneNumber)) $redirectError('Enter a valid 10-digit Nepal mobile number.');
+if ($age < 21 || $age > 100) $redirectError('Enter a valid age.');
+if ($birthYear < ($currentYear - 110) || $birthYear > $currentYear) $redirectError('Enter a valid birth year.');
+if ($address === '') $redirectError('Address is required.');
+if (!in_array($speciality, $allowedSpecialities, true)) $redirectError('Choose a valid speciality.');
+if (!in_array($qualification, $allowedQualifications, true)) $redirectError('Choose a valid qualification.');
+if (!in_array($gender, ['M', 'F', 'O'], true)) $redirectError('Choose a valid gender.');
+if (strlen($password) < 8) $redirectError('Password must be at least 8 characters long.');
+if ($password !== $confirmPassword) $redirectError('Passwords do not match.');
 
-    // Validate Email
-    if (empty($email) || !preg_match($emailPattern, $email)) {
-        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Email"));
-        exit();
-    }
-
-    // Validate Phone Number
-    if (empty($phoneNumber) || !preg_match($pattern, $phoneNumber)) {
-        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Phone Number"));
-        exit();
-    }
-
-    // Validate Age
-    if (empty($age) || $age < 25 || $age > 100) {
-        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Age"));
-        exit();
-    }
-
-    // Validate Birth Year
-    if (empty($birthYear) || $birthYear < 1925 || $birthYear > 2000) {
-        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Birth Year"));
-        exit();
-    }
-
-    // Validate Address
-    if (empty($address)) {
-        header("Location: ../doctor_registration.php?error=" . urlencode("Address is Required"));
-        exit();
-    }
-
-    // Validate Gender
-    if (empty($gender)) {
-        header("Location: ../doctor_registration.php?error=" . urlencode("Gender is Required"));
-        exit();
-    }
-
-    // Validate Password
-    if (empty($password) || strlen($password) < 8 || $password != $confirmPassword) {
-        header("Location: ../doctor_registration.php?error=" . urlencode("Invalid Password"));
-        exit();
-    }
-
-    // Insert Data into Database
-    $sql = "INSERT INTO doctor_approval(fullName,email,phoneNumber,age,birthYear,address,speciality,qualification,password,gender) 
-            VALUES ('$fullName','$email','$phoneNumber','$age','$birthYear','$address','$speciality','$qualification','$password','$gender')";
-
-    if (mysqli_query($conn, $sql)) {
-        header("Location:../../index.php");
-        exit();
-    } else {
-        header("Location: ../doctor_registration.php?error=" . urlencode("Error: " . mysqli_error($conn)));
-        exit();
-    }
-} else {
-    header("Location: ../doctor_registration.php?error=" . urlencode("All fields are required"));
-    exit();
+$check = $conn->prepare('SELECT phoneNumber FROM doctor WHERE phoneNumber = ? UNION SELECT phoneNumber FROM doctor_approval WHERE phoneNumber = ? LIMIT 1');
+$check->bind_param('ss', $phoneNumber, $phoneNumber);
+$check->execute();
+if ($check->get_result()->num_rows > 0) {
+    $check->close();
+    $redirectError('That phone number already has an account or pending application.');
 }
-?>
+$check->close();
+
+$passwordHash = password_hash($password, PASSWORD_DEFAULT);
+$stmt = $conn->prepare('INSERT INTO doctor_approval (fullName, email, phoneNumber, age, birthYear, address, speciality, qualification, password, gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+if (!$stmt) $redirectError('Unable to submit the application right now.');
+$stmt->bind_param('sssiisssss', $fullName, $email, $phoneNumber, $age, $birthYear, $address, $speciality, $qualification, $passwordHash, $gender);
+$saved = $stmt->execute();
+$stmt->close();
+
+if ($saved) {
+    header('Location: ../../index.php?doctor_application=sent');
+    exit;
+}
+$redirectError('Unable to submit the application. Please try again.');

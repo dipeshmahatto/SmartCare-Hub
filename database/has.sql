@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `username` varchar(55) NOT NULL,
-  `password` varchar(55) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -38,8 +38,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'admin'),
-(2, 'admin2', 'admin2');
+(1, 'admin', '$2y$12$uuCIbttlwwFzrjM/IFAV9.9ZleJY4wwFUzaV/uV5UPCIAKb.vD6zG'),
+(2, 'admin2', '$2y$12$mvDLKYdSLCra/AFUdMnZpeCOZ2wPtEN6kWg1XiWDatQPY/QhceNEG');
 
 -- --------------------------------------------------------
 
@@ -54,7 +54,7 @@ CREATE TABLE `appointment` (
   `doctor` varchar(55) NOT NULL,
   `app_time` varchar(255) NOT NULL,
   `day` varchar(11) NOT NULL,
-  `status` int(1) NOT NULL
+  `status` enum('pending','confirmed','completed','cancelled') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -62,8 +62,8 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`aid`, `pid`, `category`, `doctor`, `app_time`, `day`, `status`) VALUES
-(22, 1, 'Radiology', 'Dr.Aaryan', '10 AM', 'TUESDAY', 1),
-(23, 1, 'Radiology', 'Dr.Aaryan', '12 PM', 'TUESDAY', 0);
+(22, 1, 'Radiology', 'Dr.Aaryan', '10 AM', 'TUESDAY', 'completed'),
+(23, 1, 'Radiology', 'Dr.Aaryan', '12 PM', 'TUESDAY', 'confirmed');
 
 -- --------------------------------------------------------
 
@@ -81,7 +81,7 @@ CREATE TABLE `doctor` (
   `address` varchar(105) NOT NULL,
   `speciality` varchar(55) NOT NULL,
   `qualification` varchar(55) NOT NULL,
-  `password` varchar(55) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `gender` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -90,8 +90,8 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`id`, `fullName`, `email`, `phoneNumber`, `age`, `birthYear`, `address`, `speciality`, `qualification`, `password`, `gender`) VALUES
-(15, 'Dr.Aaryan', 'aaryan@gmail.com', '9819800000', 31, 1993, 'bafal', 'Radiology', 'PHD', '12345678', 'M'),
-(19, 'Dr.Dipesh', 'dipesh@gmail.com', '9803643491', 29, 1991, 'kathmandu', 'Ophthalmology', 'MBBS', 'susmita@dipesh', 'M');
+(15, 'Dr.Aaryan', 'aaryan@gmail.com', '9819800000', 31, 1993, 'bafal', 'Radiology', 'PHD', '$2y$12$iV3RBnbOkSrUnVtuuUbQMuliXpUbWU.ZSGSuBn2FPX1bGEy4aELTe', 'M'),
+(19, 'Dr.Dipesh', 'dipesh@gmail.com', '9803643491', 29, 1991, 'kathmandu', 'Ophthalmology', 'MBBS', '$2y$12$jqdHfVxLp0q4xQp2GjKPeO/afxasxFkH40hTCa6n49vieTszjyu3C', 'M');
 
 -- --------------------------------------------------------
 
@@ -109,7 +109,7 @@ CREATE TABLE `doctor_approval` (
   `address` varchar(105) NOT NULL,
   `speciality` varchar(55) NOT NULL,
   `qualification` varchar(55) NOT NULL,
-  `password` varchar(55) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `gender` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -118,7 +118,7 @@ CREATE TABLE `doctor_approval` (
 --
 
 INSERT INTO `doctor_approval` (`id`, `fullName`, `email`, `phoneNumber`, `age`, `birthYear`, `address`, `speciality`, `qualification`, `password`, `gender`) VALUES
-(21, 'Dr.Ram', 'ram@gmail.com', '9824651784', 33, 1992, 'bhartpur', 'Ophthalmology', 'MD', '12345678', 'M');
+(21, 'Dr.Ram', 'ram@gmail.com', '9824651784', 33, 1992, 'bhartpur', 'Ophthalmology', 'MD', '$2y$12$iV3RBnbOkSrUnVtuuUbQMuliXpUbWU.ZSGSuBn2FPX1bGEy4aELTe', 'M');
 
 -- --------------------------------------------------------
 
@@ -134,7 +134,7 @@ CREATE TABLE `patient` (
   `age` int(2) NOT NULL,
   `birthYear` int(4) NOT NULL,
   `address` varchar(105) NOT NULL,
-  `password` varchar(55) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `gender` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -143,8 +143,8 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`id`, `fullName`, `email`, `phoneNumber`, `age`, `birthYear`, `address`, `password`, `gender`) VALUES
-(1, 'Dipesh patient', 'patient@gmail.com', '9745837908', 22, 2003, 'kathmandu', 'patient', 'm'),
-(4, 'surya mahato', 'suryanarayan2056@gmail.com', '9819800670', 25, 1999, 'kalimati', '12345678', 'm');
+(1, 'Dipesh patient', 'patient@gmail.com', '9745837908', 22, 2003, 'kathmandu', '$2y$12$YU2v6k49bbxpOLoP8FkAa.gGMmvt3KAd.63EXcXDrONYhhkcE3YeO', 'm'),
+(4, 'surya mahato', 'suryanarayan2056@gmail.com', '9819800670', 25, 1999, 'kalimati', '$2y$12$iV3RBnbOkSrUnVtuuUbQMuliXpUbWU.ZSGSuBn2FPX1bGEy4aELTe', 'm');
 
 -- --------------------------------------------------------
 

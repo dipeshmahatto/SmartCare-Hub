@@ -1,3 +1,7 @@
+<?php
+require_once '../security.php';
+secure_session_start();
+?>
 
 <html>
 <head>
@@ -10,8 +14,10 @@
 
 <body>
   <div class="container">
+    <a class="auth-brand" href="../index.php" aria-label="SmartCare Hub home"><img src="../../img/logo.jpg" alt="SmartCare Hub"></a>
     <h1>Patient</h1>
     <form action="query/patient_registration_process.php" novalidate method="post">
+      <?= csrf_field() ?>
       <div class="register_box">
         <!-- Full name  -->
         <div class="input">
@@ -72,6 +78,7 @@
       <label for="login">Already have an account: <a href="patient_login.php">Login</a></label>
     </div>
   </div>
+  <script src="../../js/system.js" defer></script>
 </body>
 
 </html>

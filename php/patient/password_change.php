@@ -1,3 +1,7 @@
+<?php
+require_once '../security.php';
+secure_session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,19 +15,22 @@
 
 <body>
     <div class="container">
+    <a class="auth-brand" href="../index.php" aria-label="SmartCare Hub home"><img src="../../img/logo.jpg" alt="SmartCare Hub"></a>
         <form action="query/password.php" method="post">
+      <?= csrf_field() ?>
             <div class="inputbox">
                 <label for="newPassword">New Password:</label>
-                <input type="text" id="newPassword" name="newPassword" placeholder="Enter new password" required>
+                <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password" required>
             </div>
             <div class="inputbox">
                 <label for="confirmPassword">Confirm Password:</label>
-                <input type="text" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
             </div>
             <div class="submit">
                 <input type="submit" value="Submit">
             </div>
         </form>
     </div>
+  <script src="../../js/system.js" defer></script>
 </body>
 </html>

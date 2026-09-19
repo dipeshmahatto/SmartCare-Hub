@@ -1,3 +1,7 @@
+<?php
+require_once '../security.php';
+secure_session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +14,9 @@
 
 <body>
     <div class="container">
+    <a class="auth-brand" href="../index.php" aria-label="SmartCare Hub home"><img src="../../img/logo.jpg" alt="SmartCare Hub"></a>
         <form action="query/verify_user.php" method="post">
+      <?= csrf_field() ?>
             <div class="inputbox">
                 <label for="phoneNumber">Mobile Number :</label>
                 <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your registred number" minlength="10" maxlength="10" required>
@@ -27,5 +33,6 @@
             <a href="../index.php">Home</a>
         </div>
     </div>
+  <script src="../../js/system.js" defer></script>
 </body>
 </html>

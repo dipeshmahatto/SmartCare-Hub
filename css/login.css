@@ -1,135 +1,128 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-}
+@import url("system.css");
+
+* { margin: 0; padding: 0; }
 
 body {
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px 16px;
+  color: var(--sc-text);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(20, 184, 166, .15), transparent 28%),
+    radial-gradient(circle at 88% 10%, rgba(37, 99, 235, .18), transparent 30%),
+    linear-gradient(145deg, #f7fbff 0%, #e9f4ff 48%, #f8fbff 100%);
 }
 
 .container {
-    width: 100%;
-    max-width: 350px;
-    background: rgb(43, 43, 56, 1);
-    padding: 28px;
-    margin: 0 28px;
-    border-radius: 10px;
-    box-shadow: -2px 2px 2px white;
+  width: min(100%, 430px);
+  background: rgba(255,255,255,.94);
+  padding: 34px;
+  border-radius: var(--sc-radius-lg);
+  box-shadow: var(--sc-shadow);
+  border: 1px solid rgba(255,255,255,.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, var(--sc-primary), var(--sc-accent));
 }
 
 h1 {
-    font-size: 26px;
-    font-weight: 600;
-    text-align: center;
-    padding-bottom: 6px;
-    color: white;
-    text-shadow: 2px 2px 2px black;
-    border-bottom: solid 1px white;
+  font-size: clamp(1.7rem, 4vw, 2.1rem);
+  font-weight: 800;
+  text-align: center;
+  padding-bottom: 8px;
+  color: var(--sc-text);
+  border: 0;
+  text-shadow: none;
 }
 
-.login_box {
-    display: inline-block;
-    padding: 20px 0 0 0;
+h1::after {
+  content: "Secure access to SmartCare Hub";
+  display: block;
+  margin-top: 7px;
+  color: var(--sc-muted);
+  font-size: .85rem;
+  font-weight: 500;
 }
 
-.input {
-    display: inline-block;
-    width: 100%;
-    padding-bottom: 15px;
-}
-
+.login_box { display: block; padding-top: 24px; }
+.input { width: 100%; padding-bottom: 17px; }
 .input label {
-    width: 95%;
-    color: white;
-    font-size: 20px;
-    font-weight: 400;
-    margin: 5px 0;
+  display: block;
+  width: 100%;
+  color: #334155;
+  font-size: .92rem;
+  font-weight: 700;
+  margin-bottom: 7px;
 }
-
 .input input {
-    height: 40px;
-    width: 95%;
-    border-radius: 7px;
-    border: 1px solid grey;
-    padding: 0 10px;
-    margin-top: 5px;
+  width: 100%;
+  min-height: 48px;
+  border-radius: 12px;
+  padding: 0 14px;
+  margin: 0;
 }
 
-.container .forgot {
-    margin-top: 10px;
+#error-message {
+  display: block;
+  margin-top: 2px;
+  font-size: .86rem;
+  line-height: 1.4;
 }
 
-.container .forgot a {
-    text-decoration: none;
-    color: rgb(239 136 136);
-}
+.container .forgot { margin-top: 2px; text-align: right; }
+.container .forgot a { text-decoration: none; color: var(--sc-primary); font-size: .9rem; font-weight: 700; }
+.container .forgot a:hover { color: var(--sc-primary-dark); }
 
-.container .forgot a:hover {
-    color: rgb(239 136 136);
-}
-
-.submit {
-    margin-top: 40px;
-}
-
+.submit { margin-top: 24px; }
 .submit input {
-    cursor: pointer;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  font-size: .98rem;
+  font-weight: 750;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  background: linear-gradient(135deg, var(--sc-primary), #3277eb);
+  box-shadow: 0 9px 20px rgba(37,99,235,.22);
 }
+.submit input:hover { background: linear-gradient(135deg, var(--sc-primary-dark), var(--sc-primary)); color: white; box-shadow: 0 12px 24px rgba(37,99,235,.28); }
 
-.submit input {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
-    font-size: 20px;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    color: rgb(0, 0, 0);
-    background-color: #12ac8e;
-}
+.register { text-align: center; margin: 20px 0 0; color: var(--sc-muted); font-size: .9rem; }
+.register label { color: inherit; }
+.register a { text-decoration: none; color: var(--sc-primary); font-weight: 750; }
+.register a:hover { color: var(--sc-primary-dark); }
 
-.submit input:hover {
-    background: #0b745f;
-    color: rgb(255, 255, 255);
-}
-
-.register {
-    text-align: center;
-    margin: 15px 0 0 0;
-}
-
-.register label {
-    color: white;
-}
-
-.register a {
-    text-decoration: none;
-    color: #62ff00;
-}
-
-.register a:hover {
-    text-decoration: none;
-    color: #ec1414;
-}
-
-.home {
-    text-align: center;
-    margin-top: 25px;
-}
-
+.home { text-align: center; margin-top: 18px; }
 .home a {
-    text-decoration: none;
-    color: rgb(247, 245, 245);
-    border: 2px solid white;
-    padding: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #405875;
+  border: 1px solid var(--sc-border);
+  padding: 9px 14px;
+  border-radius: 11px;
+  background: #f8fbff;
+  font-weight: 700;
+  font-size: .9rem;
 }
+.home a:hover { color: var(--sc-primary); background: var(--sc-primary-soft); border-color: #bdd6fb; }
 
-.home a:hover {
-    color: rgb(81, 237, 50);
-    background-color: rgb(125, 125, 126);
+@media (max-width: 480px) {
+  body { padding: 18px 12px; }
+  .container { padding: 28px 20px; border-radius: 20px; }
 }
+html[data-theme="dark"] body { background: radial-gradient(circle at 12% 18%, rgba(20,184,166,.08), transparent 28%), radial-gradient(circle at 88% 10%, rgba(37,99,235,.11), transparent 30%), var(--sc-page); }
+html[data-theme="dark"] .container { background: rgba(17,36,58,.96); border-color: var(--sc-border); }

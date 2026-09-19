@@ -1,22 +1,31 @@
 <?php
-session_start();
-include "../../database.php";
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+require_once '../../security.php';
+secure_session_start();
+require_post_request('../admin_login.php');
+require_valid_csrf('../admin_login.php');
+include '../../database.php';
+
+$username = clean_string($_POST['username'] ?? '');
+$password = (string) ($_POST['password'] ?? '');
+
+$stmt = $conn->prepare('SELECT id, username, password FROM admin WHERE username = ? LIMIT 1');
+if (!$stmt) {
+    header('Location: ../admin_login.php?error=' . urlencode('Unable to sign in right now.'));
+    exit;
 }
-$sql = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
-$result = mysqli_query($conn, $sql);
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$row = $stmt->get_result()->fetch_assoc();
+$stmt->close();
 
-
-if (mysqli_num_rows($result) == 1) {
-    $row = mysqli_fetch_assoc($result);
-    $_SESSION['id'] = $row['id'];
-    $_SESSION['user_name'] = $row['user_name'];
+if ($row && verify_password_compatible($conn, 'admin', (int) $row['id'], $password, $row['password'])) {
+    regenerate_authenticated_session();
+    $_SESSION['id'] = (int) $row['id'];
+    $_SESSION['user_name'] = $row['username'];
     $_SESSION['Adminloggedin'] = true;
-    header('Location:../admin_dashboard.php');
-} else {
-    header("Location: ../admin_login.php?error=" . urlencode("Invalid credentials"));
-    exit();
+    header('Location: ../admin_dashboard.php');
+    exit;
 }
-?>
+
+header('Location: ../admin_login.php?error=' . urlencode('Invalid credentials'));
+exit;

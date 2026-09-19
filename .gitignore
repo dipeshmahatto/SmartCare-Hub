@@ -1,0 +1,21 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs / temporary files
+*.log
+*.tmp
+*.cache
+
+# Local uploaded profile images (keep seeded demo images already tracked manually if needed)
+php/patient/uploads/*
+php/doctor/uploads/*
+!php/patient/uploads/.gitkeep
+!php/doctor/uploads/.gitkeep

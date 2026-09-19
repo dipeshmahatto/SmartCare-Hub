@@ -1,3 +1,7 @@
+<?php
+require_once '../security.php';
+secure_session_start();
+?>
 <html>
 
 <head>
@@ -11,8 +15,10 @@
 
 <body>
   <div class="container">
+    <a class="auth-brand" href="../index.php" aria-label="SmartCare Hub home"><img src="../../img/logo.jpg" alt="SmartCare Hub"></a>
     <h1>Doctor</h1>
     <form action="query/doctor_registration_process.php" method="post">
+      <?= csrf_field() ?>
       <div class="register_box">
         <!-- Full name  -->
         <div class="input">
@@ -95,6 +101,7 @@
       <label for="login">Already have an account: <a href="doctor_login.php">Login</a></label>
     </div>
   </div>
+  <script src="../../js/system.js" defer></script>
 </body>
 
 </html>

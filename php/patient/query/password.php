@@ -1,41 +1,40 @@
 <?php
+require_once '../../security.php';
+secure_session_start();
+require_post_request('../forgot.php');
+require_valid_csrf('../password_change.php');
+include '../../database.php';
 
-include "../../database.php";
-session_start();
+$userId = (int) ($_SESSION['password_reset_user_id'] ?? 0);
+$role = $_SESSION['password_reset_role'] ?? '';
+$oldHash = (string) ($_SESSION['password_reset_old_hash'] ?? '');
+$expires = (int) ($_SESSION['password_reset_expires'] ?? 0);
+$newPassword = (string) ($_POST['newPassword'] ?? '');
+$confirmPassword = (string) ($_POST['confirmPassword'] ?? '');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $newPassword = $_POST["newPassword"];
-    $confirmPassword = $_POST["confirmPassword"];
-    $phoneNumber = $_SESSION['forgotpasswordphonenumber'];
-    $oldpassword = $_SESSION['oldpassword'];
+if ($role !== 'patient' || $userId <= 0 || $expires < time()) {
+    header('Location: ../forgot.php?error=' . urlencode('Password reset session expired. Please verify again.'));
+    exit;
+}
+if (strlen($newPassword) < 8 || $newPassword !== $confirmPassword) {
+    header('Location: ../password_change.php?error=' . urlencode('Use matching passwords with at least 8 characters.'));
+    exit;
+}
+if ($oldHash !== '' && password_matches_existing($newPassword, $oldHash)) {
+    header('Location: ../password_change.php?error=' . urlencode('Choose a password you have not just been using.'));
+    exit;
 }
 
-if ($newPassword !== $confirmPassword) {
-    header("Location: ../password_change.php?error=Passwords do not match");
-    exit();
-} elseif (strlen($newPassword) < 8) {
-    header("Location: ../password_change.php?error=Password must be at least 8 characters long");
-    exit();
-} elseif ($oldpassword === $newPassword) {
-    echo '<script>
-            alert("Cann`t use old password");
-            window.location.href = "../forgot.php";
-          </script>';
-    exit();
-}
+$passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+$stmt = $conn->prepare('UPDATE patient SET password = ? WHERE id = ?');
+$stmt->bind_param('si', $passwordHash, $userId);
+$updated = $stmt->execute();
+$stmt->close();
 
-$sql = "UPDATE patient SET password='$newPassword' WHERE phoneNumber='$phoneNumber'";
-$result = mysqli_query($conn, $sql);
-
-if ($result > 0) {
-    session_unset();
-    session_destroy();
-    echo '<script>
-            alert("Password changed successfully");
-            window.location.href = "../patient_login.php";
-          </script>';
-} else {
-    header("Location: ../forgot.php");
-    exit();
+unset($_SESSION['password_reset_user_id'], $_SESSION['password_reset_role'], $_SESSION['password_reset_old_hash'], $_SESSION['password_reset_expires']);
+if ($updated) {
+    header('Location: ../patient_login.php?password=changed');
+    exit;
 }
-?>
+header('Location: ../forgot.php?error=' . urlencode('Password could not be changed.'));
+exit;
